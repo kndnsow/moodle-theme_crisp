@@ -1,0 +1,397 @@
+<?php
+	require_once($CFG->dirroot.'/calendar/lib.php');
+	// Get the HTML for the settings bits.
+	$html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);
+	global $DB,$USER;
+	if (right_to_left()) {
+		$regionbsid = 'region-bs-main-and-post';
+	} else {
+		$regionbsid = 'region-bs-main-and-pre';
+	}
+	$hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT); 
+?>
+<?php require('header.php'); ?>    
+
+<div id="show-admin">
+	<a class="admin-sets" href="#">
+		<span></span>
+	</a>
+	<div class="adminset">  
+	<?php if ($hassidepre) { ?>
+		<?php echo $OUTPUT->blocks_for_region('side-pre') ?>
+	<?php } ?>
+	</div>
+</div>
+	
+<div id="page-content" class="row-fluid">
+	<div class="row-fluid">
+		<section id="region-main" class="span12 pull-right">
+			<!-- Necessary HTML -->
+			<div class="row-fluid">
+				<div class="span12">
+					<div id="lemmon-slider">
+						<div id="slider3" class="slider">
+							<ul>
+								<li><div>
+								<?php 
+								$name = 'theme_crisp';
+                $fieldname = 'slidepic1';
+                $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+                if(!empty($image->value)) {
+                ?>
+								<img src="<?php echo $image->value; ?>" alt="">
+								<?php } else { ?>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Edouard_Manet_010.png'; ?>" alt="">
+								<?php } ?>
+								</div></li>
+								<li><div>
+								<?php 
+								$name = 'theme_crisp';
+                $fieldname = 'slidepic2';
+                $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+                if(!empty($image->value)) {
+                ?>
+                <img src="<?php echo $image->value; ?>" alt="">
+                <?php } else { ?>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Maler_der_Grabkammer_der_Nefertari_001.png'; ?>" alt="">
+								<?php } ?>
+								</div></li>
+								<li><div>
+								<?php 
+								$name = 'theme_crisp';
+                $fieldname = 'slidepic3';
+                $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+                if(!empty($image->value)) {
+                ?>
+                <img src="<?php echo $image->value; ?>" alt="">
+                <?php } else { ?>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Mona_Lisa_by_Leonardo_da_Vinci_042.png'; ?>" alt="">
+								<?php } ?>
+								</div></li>
+								<li><div>
+								<?php 
+								$name = 'theme_crisp';
+                $fieldname = 'slidepic4';
+                $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+                if(!empty($image->value)) {
+                ?>
+                <img src="<?php echo $image->value; ?>" alt="">
+                <?php } else { ?>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Byzantinischer_Mosaizist_um_1122_001.png'; ?>" alt="">
+								<?php } ?>
+								</div></li>
+								<li><div>
+								<?php 
+								$name = 'theme_crisp';
+                $fieldname = 'slidepic5';
+                $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+                if(!empty($image->value)) {
+                ?>
+                <img src="<?php echo $image->value; ?>" alt="">
+                <?php } else { ?>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Vincent_Willem_van_Gogh_101.png'; ?>" alt="">
+								<?php } ?>
+								</div></li>
+								<li><div>
+								<?php 
+								$name = 'theme_crisp';
+                $fieldname = 'slidepic6';
+                $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+                if(!empty($image->value)) {
+                ?>
+                <img src="<?php echo $image->value; ?>" alt="">
+                <?php } else { ?>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Sandro_Botticelli_077.png'; ?>" alt="">
+								<?php } ?>
+								</div></li>
+							</ul>
+						</div>
+						<div class="controls">
+							<a href="#" class="next-page"></a>
+							<a href="#" class="prev-page"></a>
+						</div>
+					</div> <!-- end of lemmon slider -->
+				</div> 
+			</div> 
+			<script>
+				window.onload = function(){
+         // home page slider 
+			  $( '#slider3' ).lemmonSlider({ infinite: true });
+					sliderAutoplay();
+			  }
+			  // autoplay
+			  var sliderTimeout = null;
+			  function sliderAutoplay(){
+				  $( '#slider3' ).trigger( 'nextSlide' );
+				  sliderTimeout = setTimeout( 'sliderAutoplay()', 3000 );
+			  }
+			</script>
+			<div class="bodydetails">
+				<div class="row-fluid">
+					<div class="span8">
+						<div class="shortnote">
+							<?php  
+              	$plugin_name = 'theme_crisp';
+                $fieldname = 'picture1';
+                $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+                if(!empty($body->value)) {
+              ?>
+              <div class="welcomemsg"><img src="<?php echo $body->value; ?>"></div>
+              <?php } else {?>
+              <div class="welcomemsg"><img src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/pix/titled.png';?>"></div>
+              <?php } ?>
+								<div class="bodytexts">
+									<div class="forsupport">
+										<div class="icons">
+											<?php  ///// for the icon
+												$plugin_name = 'theme_crisp';
+												$fieldname = 'pic1';
+												$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+												if(!empty($body->value)) {
+											?>
+											<a href="<?php echo $CFG->wwwroot.'/blog/index.php?userid='.$USER->id;?>"><img class="pics" src="<?php echo $body->value; ?>"/></a>
+											<?php } else {?>
+											<a href="<?php echo $CFG->wwwroot.'/blog/index.php?userid='.$USER->id;?>"><img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/pix/attach.png'; ?>"/></a>
+											<?php } ?>
+										</div>
+										<div class="heads">
+											<?php  ///// for the heading
+												$plugin_name = 'theme_crisp';
+												$fieldname = 'supportpara';
+												$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+												if(!empty($body->value)) {
+											?>
+											<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
+											<?php } else {?>
+											<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo 'Support'; ?></b></p>
+											<?php } ?>
+										</div>
+										<div class="texts">
+											<?php  ///// for the text
+												$plugin_name = 'theme_crisp';
+												$fieldname = 'supportparatext';
+												$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+												if(!empty($body->value)) {
+												$str = $body->value;
+												} else {
+												$str = get_string('separateandconnectedinfo');
+												}
+												$sstr = substr($str, 0, 165) . '...'; //140
+											?>
+											<p><?php echo $sstr; ?></p>
+											
+										</div>
+									</div> <!-- end of forsupport -->
+									<div class="forcourses">
+										<div class="icons">
+											<?php
+												$plugin_name = 'theme_crisp';/// for the icon
+												$fieldname = 'pic2';
+												$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+												if(!empty($body->value)) {
+											?>
+											<a href="<?php echo $CFG->wwwroot.'/course/index.php';?>"><img class="pics" src="<?php echo $body->value; ?>"/></a>
+											<?php } else {?>
+											<a href="<?php echo $CFG->wwwroot.'/course/index.php';?>"><img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/pix/course.png'; ?>"/></a>
+											<?php } ?>
+										</div>
+									<div class="heads">
+										<?php  ///// for the heading
+											$plugin_name = 'theme_crisp';
+											$fieldname = 'coursespara';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+											if(!empty($body->value)) {
+										?>
+										<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
+										<?php } else {?>
+                    <p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo 'Course'; ?></b></p>
+                    <?php } ?>
+									</div>
+									<div class="texts">
+										<?php  ///// for the text
+											$plugin_name = 'theme_crisp';
+											$fieldname = 'coursesparatext';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+											if(!empty($body->value)) {
+											$str = $body->value;
+											} else {
+												$str = get_string('separateandconnectedinfo');
+                      }
+											$sstr = substr($str, 0, 165) . '...'; 
+										?>
+										<p><?php echo $sstr; ?></p>
+										
+									</div>
+								</div>  <!-- end of forcourses -->
+								<div class="forforum">
+									<div class="icons">
+										<?php
+											$plugin_name = 'theme_crisp';///for icon
+											$fieldname = 'pic3';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+											if(!empty($body->value)) {
+										?>
+										<a href="<?php echo $CFG->wwwroot.'/mod/forum/user.php?id='.$USER->id;?>"><img class="pics" src="<?php echo $body->value; ?>"/></a>
+										<?php } else {?>
+                    <a href="<?php echo $CFG->wwwroot.'/mod/forum/user.php?id='.$USER->id;?>"><img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/pix/forum.png'; ?>"/></a>
+                    <?php } ?>
+									</div>
+									<div class="heads">
+										<?php  ///// for the heading
+											$plugin_name = 'theme_crisp';
+											$fieldname = 'forumpara';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+											if(!empty($body->value)) {
+										?>
+										<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
+										<?php } else {?>
+                    <p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo 'Forum'; ?></b></p>
+                    <?php } ?>
+									</div>
+									<div class="texts">
+										<?php  ///// for the text
+											$plugin_name = 'theme_crisp';
+											$fieldname = 'forumparatext';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+											if(!empty($body->value)) {
+											$str = $body->value;
+											} else {
+												$str = get_string('separateandconnectedinfo');
+                      }
+											$sstr = substr($str, 0, 165) . '...';
+										?>
+										<p><?php echo $sstr; ?></p>
+										
+									</div>
+								</div> <!-- end of forforum -->
+							</div>
+							<div class="quotations">
+                <div class="quoteshead">
+                <?php 
+                $plugin_name = 'theme_crisp';
+                $fieldname = 'quoteheading';
+                $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+                if(!empty($body->value)) { ?>
+                <?php echo $body->value; ?>
+                <?php } else { ?>
+                <?php echo "The Word on the Street"; ?>
+                <?php } ?>
+                </div>
+                <div class="quote">
+                <?php 
+                $plugin_name = 'theme_crisp';
+                $fieldname = 'quoteheadingtext';
+                $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+                if(!empty($body->value)) { ?>
+                <blockquote><p>"<?php echo $body->value; ?></p>"</blockquote>
+                <?php } else { ?>
+                <blockquote><p>"<?php echo get_string('separateandconnectedinfo'); ?>"</p></blockquote> 
+                <?php } ?>  
+                </div> <!-- end of quote -->
+							</div> <!-- end of quotations -->
+						</div> <!-- end of shortnote -->
+					</div> <!-- end of span8 cust -->
+							<!-- FOR UPCOMING EVENTS & CALENDAR -->	
+					<div class="span4" style="margin-left: 0;">
+						<div class="dateandevents">
+							<div class="row-fluid">
+								<div class="span12">
+									<div class="upcomingevents">
+										<div class="event"><b><?php echo "UPCOMING EVENTS"; ?></b></div>
+										<?php
+											
+											$array = array();
+											$course = $DB->get_records_sql('select id from {course}');
+											foreach($course as $key => $courses) {
+												$array[] = $courses->id;
+											}
+											
+											$defaultlookahead = CALENDAR_DEFAULT_UPCOMING_LOOKAHEAD;
+											if (isset($CFG->calendar_lookahead)) {
+													$defaultlookahead = intval($CFG->calendar_lookahead);
+											}
+											$lookahead = get_user_preferences('calendar_lookahead', $defaultlookahead);
+											
+							
+											$defaultmaxevents = CALENDAR_DEFAULT_UPCOMING_MAXEVENTS;
+											if (isset($CFG->calendar_maxevents)) {
+													$defaultmaxevents = intval($CFG->calendar_maxevents);
+											}
+											$maxevents = get_user_preferences('calendar_maxevents', $defaultmaxevents);
+											
+											$events = calendar_get_upcoming($array, '', $USER->id, $lookahead, $maxevents);
+											
+											
+											foreach($events as $upcomingevents) {
+												$date = date("F j",(int)$upcomingevents->timestart).'-'. date("j,Y",(int)$upcomingevents->timestart + (int)$upcomingevents->timeduration);
+										?>
+										<p><?php echo $upcomingevents->name;?><br><?php echo $upcomingevents->description;?><br><?php echo $date;?></p>
+										<?php } ?>
+									</div> <!-- end of upcomingevents -->
+								</div> <!-- end of span12 --> 
+								<div class="span12">
+									<div class="calendar">
+										<?php
+											$cal_m = optional_param( 'cal_m', 0, PARAM_INT );
+											$cal_y = optional_param( 'cal_y', 0, PARAM_INT );
+											$calendar = calendar_get_mini(array(), '', $USER->id, $cal_m, $cal_y, 'frontpage', 1);
+											echo $calendar;
+										?>
+									</div> <!-- end of calendar -->
+								</div> <!-- end of span12 --> 
+							</div> <!-- end of row-fluid -->
+						</div> <!-- end of dateandevents -->
+					</div> <!-- end of span4 -->
+				<div>  <!-- end of row-fluid div cust -->
+			</div> <!-- end of bodydetails -->
+			
+			
+			<!-- FOR GROUPS -->
+			
+			<div class="row-fluid" style="margin: 0 auto;">
+				<div class="span12" style="width: 100%;">
+					<div class="forgroups">
+						<div class="row-fluid"><div class="span12"><div class="group">Course Category</div></div></div>  <!-- HEADING -->
+						<div id="eachgroup-content2" class="row-fluid">
+              <?php
+              $groups = $DB->get_records_sql('select mcat.id,mcat.name,mcat.description from {course_categories} mcat');
+              if(isset($groups) && !empty($groups)) {
+                foreach($groups as $groups_cat) { ?>
+                  <div id="<?php echo $groups_cat->id; ?>" class="span3 forgroup">
+                    <div class="images">
+                      <?php  ///// for the icon
+                        $plugin_name = 'theme_crisp';
+                        $fieldname = 'img1';
+                        $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
+                        if(!empty($body->value)) {
+                      ?>
+                      <img class="pics" src="<?php echo $body->value; ?>"/>
+                      <?php } else {?>
+                      <img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/img/fc-Sandro_Botticelli_077.png'; ?>"/>
+                      <?php } ?>  
+                    </div>
+                    <div class="headings">
+                      <p><b><?php echo $groups_cat->name; ?></b></p>
+                    </div>
+                    <div class="textings">
+                      <p><?php echo $groups_cat->description; ?></p>
+                    </div>
+                    <a class="viewbtn" href="<?php echo $CFG->wwwroot.'/course/index.php?categoryid='.$groups_cat->id;?>">view</a>
+                  </div>
+                <?php  } // end of foreach()
+              } // end of if()
+              ?>
+						<div> <!-- end of for eachgroup-content2 -->
+					</div> <!-- end of forgroups -->
+				</div> <!-- end of span12 -->
+			</div>  <!-- end of row-fluid -->
+			<div id="bodymaincontent" class="row-fluid">
+			<?php
+			echo $OUTPUT->main_content();
+			?>
+			</div>
+		</section>
+	</div>
+</div>
+<?php require('footer.php'); ?>
+
