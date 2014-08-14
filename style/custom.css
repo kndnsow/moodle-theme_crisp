@@ -254,6 +254,26 @@ ul.dropdown li:hover {
 
 /*********** end dropdown **********/
 
+
+/************ starts breadcrumbs nav menu *************/
+
+nav#pageheader-nav ul.breadcrumb li a {
+  color: #088a4a;
+}
+
+
+/***********************/
+
+/*************/
+
+div#bodymaincontent .sitetopic {
+  display: none;
+}
+
+/***********/
+
+
+
 .container-fluid {
   background: white;
 }
