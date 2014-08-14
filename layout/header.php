@@ -86,6 +86,9 @@ echo $OUTPUT->doctype()
         <?php echo $OUTPUT->course_header(); ?>
     </div>
   </header>
+  <div id="page-navbar" class="clearfix">
+    <nav id="pageheader-nav" class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
+  </div>
 </div>
 
 
