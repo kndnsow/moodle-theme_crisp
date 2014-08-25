@@ -1,4 +1,19 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 $PAGE->requires->jquery();
 $PAGE->requires->jquery_plugin('ui');
 $PAGE->requires->jquery_plugin('ui-css');
@@ -11,7 +26,7 @@ $PAGE->requires->js('/theme/'.$CFG->theme.'/javascript/crispy.js');
 $PAGE->requires->css('/theme/'.$CFG->theme.'/fancyBox/source/jquery.fancybox.css');
 
 
-global $CFG,$USER;
+global $CFG, $USER;
 $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);
 echo $OUTPUT->doctype()
 ?>
@@ -32,7 +47,9 @@ echo $OUTPUT->doctype()
     <div class="container-fluid">
     	<?php if (!isloggedin()) { ?>
       <a class="brand" href="<?php echo $CFG->wwwroot. '/login/index.php';?>">Log in</a>
-      <?php } ?>
+      <?php 
+}
+      ?>
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -42,7 +59,7 @@ echo $OUTPUT->doctype()
         <?php echo $OUTPUT->custom_menu(); ?>
         <ul class="nav pull-right">
           <li><?php echo $OUTPUT->page_heading_menu();
-              include('profileblock.php');?>
+              require('profileblock.php');?>
           </li>
           <li class="navbar-text"></li>
         </ul>
@@ -90,5 +107,3 @@ echo $OUTPUT->doctype()
     <nav id="pageheader-nav" class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
   </div>
 </div>
-
-

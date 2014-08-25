@@ -30,12 +30,11 @@
 
 $THEME->name = 'crisp';
 
-/////////////////////////////////
+
 // The only thing you need to change in this file when copying it to
 // create a new theme is the name above. You also need to change the name
-// in version.php and lang/en/theme_clean.php as well.
-//////////////////////////////////
-//
+// in version.php and lang/en/theme_crisp.php as well.
+
 $THEME->doctype = 'html5';
 $THEME->parents = array('bootstrapbase');
 $THEME->sheets = array('custom');
@@ -62,25 +61,24 @@ $THEME->layouts = array(
   'login' => array(
         'file' => 'column1login.php',
         'regions' => array(),
-        'options' => array('langmenu'=>true),
+        'options' => array('langmenu' => true),
     ),
   // The site home page.
   'frontpage' => array(
       'file' => 'columns3home.php',
-      'regions' => array('defaultregion' => 'side-pre'),
-      'options' => array('nonavbar'=>true),
+      'regions' => array('side-pre'),
+      'defaultregion' => 'side-pre',
+      'options' => array('nonavbar' => true),
   ),
   'blog' => array(
       'file' => 'masonryblogpage.php',
       'regions' => array('side-pre'),
       'defaultregion' => 'side-pre',
-      'options' => array('nonavbar'=>true),
+      'options' => array('nonavbar' => true),
   ),
-  
   'coursecat' => array(
       'file' => 'columns2.php',
-      'regions' => array('defaultregion' => 'side-pre'),  
-      'options' => array('nonavbar'=>true),
+      'regions' => array('defaultregion' => 'side-pre'),
+      'options' => array('nonavbar' => true),
   ),
-  
 );

@@ -23,7 +23,7 @@
  * For full information about creating Moodle themes, see:
  * http://docs.moodle.org/dev/Themes_2.0
  *
- * @package   theme_clean
+ * @package   theme_crisp
  * @copyright 2013 Moodle, moodle.org
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -151,7 +151,7 @@ function theme_crisp_get_html_for_settings(renderer_base $output, moodle_page $p
 }
 
 /**
- * All theme functions should start with theme_clean_
+ * All theme functions should start with theme_crisp_
  * @deprecated since 2.5.1
  */
 function crisp_process_css() {
@@ -159,7 +159,7 @@ function crisp_process_css() {
 }
 
 /**
- * All theme functions should start with theme_clean_
+ * All theme functions should start with theme_crisp_
  * @deprecated since 2.5.1
  */
 function crisp_set_logo() {
@@ -167,7 +167,7 @@ function crisp_set_logo() {
 }
 
 /**
- * All theme functions should start with theme_clean_
+ * All theme functions should start with theme_crisp_
  * @deprecated since 2.5.1
  */
 function crisp_set_customcss() {

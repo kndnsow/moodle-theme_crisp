@@ -38,9 +38,7 @@ echo $OUTPUT->doctype() ?>
 </div>
 
 <footer id="page-footer">
-		<?php
-		echo $OUTPUT->standard_footer_html();
-		?>
+		<?php echo $OUTPUT->standard_footer_html(); ?>
 </footer>
 
 <?php echo $OUTPUT->standard_end_of_body_html() ?>

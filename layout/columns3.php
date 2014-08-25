@@ -30,7 +30,6 @@
 
 // Get the HTML for the settings bits.
 $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);
-
 if (right_to_left()) {
     $regionbsid = 'region-bs-main-and-post';
 } else {
@@ -38,9 +37,7 @@ if (right_to_left()) {
 }
 
 ?>
-
 <?php require('header.php'); ?>
-
 <div id="show-admin">
   <a class="admin-sets" href="#">
     <span></span>
@@ -51,7 +48,6 @@ if (right_to_left()) {
     ?>
   </div>  
 </div> 
-
 <div id="page-content" class="row-fluid">
   <div id="<?php echo $regionbsid ?>" class="span9">
     <div class="row-fluid">
@@ -66,7 +62,4 @@ if (right_to_left()) {
   </div>
   <?php echo $OUTPUT->blocks('side-post', 'span3'); ?>
 </div>
-
- 
-<?php require('footer.php'); ?>
-	
+<?php require('footer.php');

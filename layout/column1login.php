@@ -17,9 +17,7 @@
 
 // Get the HTML for the settings bits.
 $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);?>
-
 <?php require('header.php'); ?>
-
 <div id="page" class="container-fluid">
   <div id="page-content" class="row-fluid">
     <section id="region-main" class="span12">
@@ -41,5 +39,4 @@ $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);?>
     </section>
   </div>
   
-  <?php require('footer.php'); ?>
-  
+<?php require('footer.php');

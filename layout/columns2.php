@@ -21,7 +21,6 @@ $left = (!right_to_left());  // To know if to add 'pull-right' and 'desktop-firs
 ?>
 
 <?php require('header.php'); ?>
-
 <div id="show-admin">
   <a class="admin-sets" href="#">
     <span></span>
@@ -32,16 +31,16 @@ $left = (!right_to_left());  // To know if to add 'pull-right' and 'desktop-firs
     ?>
   </div>  
 </div>  
-
 <div id="page-content" class="row-fluid">
-  <section id="region-main" class="span9<?php if ($left) { echo ' pull-right'; } ?> main-span-content">
-    <?php
-    echo $OUTPUT->course_content_header();
-    echo $OUTPUT->main_content();
-    echo $OUTPUT->course_content_footer();
-    ?>
+  <section id="region-main" class="span9<?php if ($left) {
+    echo ' pull-right';
+}
+  ?> main-span-content">
+  <?php
+  echo $OUTPUT->course_content_header();
+  echo $OUTPUT->main_content();
+  echo $OUTPUT->course_content_footer();
+  ?>
   </section>
 </div>
-
-<?php require('footer.php'); ?>
-    
+<?php require('footer.php');

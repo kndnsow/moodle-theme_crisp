@@ -29,5 +29,4 @@ $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);?>
       </section>
   </div>
 
- <?php require('footer.php'); ?>
-  
+ <?php require('footer.php');
