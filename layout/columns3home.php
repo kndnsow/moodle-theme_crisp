@@ -13,8 +13,22 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
 // Get the HTML for the settings bits.
+
+/**
+ * Moodle's crisp theme, an example of how to make a Bootstrap theme
+ *
+ * DO NOT MODIFY THIS THEME!
+ * COPY IT FIRST, THEN RENAME THE COPY AND MODIFY IT INSTEAD.
+ *
+ * For full information about creating Moodle themes, see:
+ * http://docs.moodle.org/dev/Themes_2.0
+ *
+ * @package   theme_crisp
+ * @copyright 2014 dualcube {@link http://dualcube.com}
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 require_once($CFG->dirroot.'/calendar/lib.php');
 $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);
 global $DB, $USER;
@@ -455,20 +469,20 @@ if (isset($groups) && !empty($groups)) {
                   <div id="<?php echo $groupscat->id; ?>" class="span3 forgroup">
                     <div class="images">
 <?php
-// For the icon.
-$plugin_name = 'theme_crisp';
-$fieldname = 'img1';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$plugin_name.'" and mcp.name="'.$fieldname.'"');
-if (!empty($body->value)) {
+        // For the icon.
+        $pluginname = 'theme_crisp';
+        $fieldname = 'img1';
+        $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
+            where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+        if (!empty($body->value)) {
 ?>
                <img class="pics" src="<?php echo $body->value; ?>"/>
 <?php
-} else {
+        } else {
 ?>
                <img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/img/fc-Sandro_Botticelli_077.png'; ?>"/>
 <?php
-}
+        }
 ?>
                     </div>
                     <div class="headings">
@@ -480,8 +494,10 @@ if (!empty($body->value)) {
                     <a class="viewbtn" href="<?php echo $CFG->wwwroot.'/course/index.php?categoryid='.$groupscat->id;?>">view</a>
                   </div>
                 <?php
-} // End of foreach().
-} // End of if().
+    }
+    // End of foreach().
+}
+    // End of if().
 ?>
 						<div> <!-- end of for eachgroup-content2 -->
 					</div> <!-- end of forgroups -->

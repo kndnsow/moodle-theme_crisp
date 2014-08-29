@@ -24,14 +24,17 @@
  * http://docs.moodle.org/dev/Themes_2.0
  *
  * @package    theme_crisp
- * @copyright  2013 Moodle, moodle.org
+ * @copyright  2014 dualcube {@link http://dualcube.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2014072500;
+$plugin->version   = 2014082900;
 $plugin->component = 'theme_crisp';
 $plugin->dependencies = array(
     'theme_bootstrapbase'  => 2013050100,
 );
+$plugin->maturity = MATURITY_STABLE;
+$plugin->requires  = 2013051401;
+$plugin->release = '2.5 (Build: 2014082901)';

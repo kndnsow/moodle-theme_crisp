@@ -24,7 +24,7 @@
  * http://docs.moodle.org/dev/Themes_2.0
  *
  * @package   theme_crisp
- * @copyright 2013 Moodle, moodle.org
+ * @copyright 2014 dualcube {@link http://dualcube.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
