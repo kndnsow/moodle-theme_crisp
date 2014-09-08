@@ -1,8 +1,7 @@
 /* Custom CSS
 -------------------------*/
 @font-face {
-    font-family: robotoCondensed;
-    src: url('../../../crisp/fonts/robotocondensedregular.ttf');
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 a.logo {
@@ -28,7 +27,7 @@ a.logo {
 
 html,
 body {
-    font-family: robotoCondensed;
+    font-family: 'Roboto Condensed', sans-serif;
     font-style: normal;
     font-weight: 400;
 }
@@ -61,7 +60,6 @@ div.block {
   border-radius: 0px;
 }
 
-/*fancybox*/
 .hidden {
   display: none;
 }
@@ -181,7 +179,7 @@ header#page-header h1 img{
   text-decoration: none;
   padding-right: 20%;
   padding-left: 14%;
-  font-family: robotoCondensed;
+  font-family: 'Roboto Condensed', sans-serif;
   height: 100%;
   display: inline-block;
 }
@@ -536,7 +534,7 @@ div.quoteshead {
   margin-left: 5%;
   margin-top: 3%;
   text-decoration: underline;
-  font-family: robotoCondensed;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 blockquote {
@@ -553,7 +551,7 @@ blockquote small {
   color: #088a4a;
   font-weight: normal;
   text-align: end;
-  font-family: robotoCondensed;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 div.quote {
@@ -561,7 +559,7 @@ div.quote {
   margin-top: 2%;
   margin-left: 5%;
   width: 86%;
-  font-family: robotoCondensed;
+  font-family: 'Roboto Condensed', sans-serif;
   padding-left: 2%;
   padding-right: 2%;
   padding-top: 2%;
@@ -592,7 +590,7 @@ div.group {
   color: gray;
   text-decoration: underline;
   padding-bottom: 2%;
-  font-family: robotoCondensed;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 /*calender*/
@@ -610,7 +608,7 @@ div.event {
   color: gray;
   text-decoration: underline;
   padding-bottom: 2%;
-  font-family: robotoCondensed;
+  font-family: 'Roboto Condensed', sans-serif;
   padding-top: 10%;
 }
 
@@ -694,7 +692,7 @@ a.viewbtn {
   cursor: pointer;
   color: whitesmoke;
   padding: 3px 14px;
-  font-family: robotoCondensed;
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 15px;
   text-shadow: none;
   margin-bottom: 0;

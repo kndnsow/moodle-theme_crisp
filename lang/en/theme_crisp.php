@@ -17,8 +17,8 @@
 /**
  * Strings for component 'theme_crisp', language 'en'
  *
- * @package   theme_clean
- * @copyright 2013 Moodle, moodle.org
+ * @package   theme_crisp
+ * @copyright 2014 dualcube {@link http://dualcube.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

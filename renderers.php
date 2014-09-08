@@ -39,8 +39,9 @@ class theme_crisp_core_blog_renderer extends core_blog_renderer {
         foreach ($entry->renderable->attachments as $file => $fileval) {
             $filename[] = $fileval->filename;
         }
-        $attachedfiles = $DB->get_records_sql('select * from {files} mf where mf.component="blog"
-          and mf.mimetype IS NOT NULL AND mf.filearea="attachment" AND mf.filename IN ("'.implode("\", \"", $filename).'")');
+        $attachedfiles = $DB->get_records_sql('select * from {files} mf where mf.component = ?
+          and mf.mimetype IS NOT NULL AND mf.filearea = ? AND mf.filename IN (?)',
+          array('blog', 'attachment', implode("\", \"", $filename)));
         if (isset($attachedfiles) && !empty($attachedfiles)) {
               $resourceclass = '';
               $storyclass = '';

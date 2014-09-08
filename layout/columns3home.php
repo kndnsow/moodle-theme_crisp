@@ -68,14 +68,14 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
                 $name = 'theme_crisp';
                 $fieldname = 'slidepic1';
                 $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-                  where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+                  where mcp.plugin = ? and mcp.name = ?', array($name, $fieldname));
 if (!empty($image->value)) {
 ?>
 								<img src="<?php echo $image->value; ?>" alt=""/>
 <?php
 } else {
 ?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Edouard_Manet_010.png'; ?>" alt=""/>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/vintage.jpg'; ?>" alt=""/>
 <?php
 }
 ?>
@@ -85,14 +85,14 @@ if (!empty($image->value)) {
 $name = 'theme_crisp';
 $fieldname = 'slidepic2';
 $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
 if (!empty($image->value)) {
 ?>
                 <img src="<?php echo $image->value; ?>" alt=""/>
                 <?php
 } else {
 ?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Maler_der_Grabkammer_der_Nefertari_001.png'; ?>" alt=""/>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/littlevisuals.jpg'; ?>" alt=""/>
 								<?php
 }
 ?>
@@ -102,14 +102,14 @@ if (!empty($image->value)) {
 $name = 'theme_crisp';
 $fieldname = 'slidepic3';
 $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
 if (!empty($image->value)) {
 ?>
                 <img src="<?php echo $image->value; ?>" alt=""/>
                 <?php
 } else {
 ?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Mona_Lisa_by_Leonardo_da_Vinci_042.png'; ?>" alt=""/>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/gratisography.jpg'; ?>" alt=""/>
 								<?php
 }
 ?>
@@ -119,14 +119,14 @@ if (!empty($image->value)) {
 $name = 'theme_crisp';
 $fieldname = 'slidepic4';
 $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
 if (!empty($image->value)) {
 ?>
                 <img src="<?php echo $image->value; ?>" alt=""/>
                 <?php
 } else {
 ?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Byzantinischer_Mosaizist_um_1122_001.png'; ?>" alt=""/>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/millionfreepictures.jpg'; ?>" alt=""/>
 								<?php
 }
 ?>
@@ -136,14 +136,14 @@ if (!empty($image->value)) {
 $name = 'theme_crisp';
 $fieldname = 'slidepic5';
 $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
 if (!empty($image->value)) {
 ?>
                 <img src="<?php echo $image->value; ?>" alt=""/>
                 <?php
 } else {
 ?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Vincent_Willem_van_Gogh_101.png'; ?>" alt=""/>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/pixabay.jpg'; ?>" alt=""/>
 								<?php
 }
 ?>
@@ -153,14 +153,14 @@ if (!empty($image->value)) {
 $name = 'theme_crisp';
 $fieldname = 'slidepic6';
 $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$name.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
 if (!empty($image->value)) {
 ?>
                 <img src="<?php echo $image->value; ?>" alt=""/>
                 <?php
 } else {
 ?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/Sandro_Botticelli_077.png'; ?>" alt=""/>
+								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/unsplash.jpg'; ?>" alt=""/>
 								<?php
 }
 ?>
@@ -195,7 +195,7 @@ if (!empty($image->value)) {
 $pluginname = 'theme_crisp';
 $fieldname = 'picture1';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
 if (!empty($body->value)) {
 ?>
               <div class="welcomemsg"><img src="<?php echo $body->value; ?>"/></div>
@@ -213,7 +213,7 @@ if (!empty($body->value)) {
 $pluginname = 'theme_crisp';
 $fieldname = 'pic1';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
 											<a href="<?php echo $CFG->wwwroot.'/blog/index.php?userid='.$USER->id;?>">
@@ -232,7 +232,7 @@ if (!empty($body->value)) {
 $pluginname = 'theme_crisp';// For the heading.
 $fieldname = 'supportpara';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name= ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
 											<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
@@ -249,7 +249,7 @@ if (!empty($body->value)) {
 $pluginname = 'theme_crisp';// For the text.
 $fieldname = 'supportparatext';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name= ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
     $str = $body->value;
 } else {
@@ -266,7 +266,7 @@ $sstr = substr($str, 0, 165) . '...';
 $pluginname = 'theme_crisp';// For the icon.
 $fieldname = 'pic2';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
 											<a href="<?php echo $CFG->wwwroot.'/course/index.php';?>"><img class="pics" src="<?php echo $body->value; ?>"/></a>
@@ -284,7 +284,7 @@ if (!empty($body->value)) {
 $pluginname = 'theme_crisp';
 $fieldname = 'coursespara';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
 										<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
@@ -301,7 +301,7 @@ if (!empty($body->value)) {
 $pluginname = 'theme_crisp';
 $fieldname = 'coursesparatext';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
     $str = $body->value;
 } else {
@@ -318,7 +318,7 @@ $sstr = substr($str, 0, 165) . '...';
 $pluginname = 'theme_crisp';// For icon.
 $fieldname = 'pic3';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
 										<a href="<?php echo $CFG->wwwroot.'/mod/forum/user.php?id='.$USER->id;?>">
@@ -338,7 +338,7 @@ if (!empty($body->value)) {
 $pluginname = 'theme_crisp';
 $fieldname = 'forumpara';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
 										<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
@@ -356,7 +356,7 @@ if (!empty($body->value)) {
 $pluginname = 'theme_crisp';
 $fieldname = 'forumparatext';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
     $str = $body->value;
 } else {
@@ -374,7 +374,7 @@ $sstr = substr($str, 0, 165) . '...';
 $pluginname = 'theme_crisp';
 $fieldname = 'quoteheading';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
                 <?php echo $body->value; ?>
@@ -391,7 +391,7 @@ if (!empty($body->value)) {
 $pluginname = 'theme_crisp';
 $fieldname = 'quoteheadingtext';
 $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
                 <blockquote><p>"<?php echo $body->value; ?></p>"</blockquote>
@@ -473,14 +473,14 @@ if (isset($groups) && !empty($groups)) {
         $pluginname = 'theme_crisp';
         $fieldname = 'img1';
         $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-            where mcp.plugin="'.$pluginname.'" and mcp.name="'.$fieldname.'"');
+            where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
         if (!empty($body->value)) {
 ?>
                <img class="pics" src="<?php echo $body->value; ?>"/>
 <?php
         } else {
 ?>
-               <img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/img/fc-Sandro_Botticelli_077.png'; ?>"/>
+               <img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/img/publicdomainpictures.jpg'; ?>"/>
 <?php
         }
 ?>
