@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<libraries>
+    <library>
+        <location>javascript/jquery-ui.min.js</location>
+        <name>jQuery UI</name>
+        <version>v1.10.2</version>
+        <license>MIT</license>
+        <licenseversion>2.0</licenseversion>
+    </library>
+    <library>
+        <location>javascript/crispy.js</location>
+        <name>Docking Script for Moodle</name>
+        <version>2014090600</version>
+        <license>GPL</license>
+        <licenseversion>3.0</licenseversion>
+    </library>
+    <library>
+        <location>javascript/font.js</location>
+        <name>Script for Customized Moodle Fonts</name>
+        <version>2014090600</version>
+        <license>GPL</license>
+        <licenseversion>3.0</licenseversion>
+    </library>
+    <library>
+        <location>lemmon-Lemmon-Slider/lemmon-slider.js</location>
+        <name>Lemmon Slider - jQuery Plugin</name>
+        <version>Version: 0.2 (9/6/2011)</version>
+        <license>MIT</license>
+        <licenseversion>2.0</licenseversion>
+    </library>
+</libraries>
