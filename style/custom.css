@@ -1,0 +1,803 @@
+/* Custom CSS
+-------------------------*/
+@font-face {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+a.logo {
+    background: url([[setting:logo]]) no-repeat 0 0;
+    display: block;
+    float: left;
+    height: 75px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.dir-rtl a.logo {
+    background: url([[setting:logo]]) no-repeat 100% 0;
+    display: block;
+    float: right;
+}
+/*------------------------*/
+
+/* Necessary CSS */
+
+/********custom styles*********/
+
+html,
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+body {
+		padding-top: 51px;
+}
+
+div#frontpage-course-list {
+  display: none;
+}
+div#frontpage-course-list .coursebox.clearfix.odd.first.last {
+		padding: 5px;
+		margin-bottom: 15px;
+		border: 1px dotted #ddd;
+		border-radius: 4px;
+		margin-left: 4%;
+		width: 90%;
+}
+
+div#frontpage-course-list h2 {
+  width: 90%;
+  margin-left: 4%;
+}
+
+
+
+div.block {
+  border-radius: 0px;
+}
+
+.hidden {
+  display: none;
+}
+
+div#page-content.row-fluid {
+  min-height: 1022px;
+}
+
+
+section#region-main.main-span-content {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 80%;
+  float: none;
+}
+
+div#notice {
+		width: 80%;
+		min-width: 220px;
+		margin: 0 auto;
+}
+
+
+
+/********/
+
+div.adminset {
+  width: 200px;
+  position: absolute;
+  /*top: 222px;*/
+  top: 255px;
+  z-index: 9999;
+}
+
+
+a.admin-sets {
+		position: fixed;
+		width: 62px;
+		height: 52px;
+		background-color: #393939;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+		float: left;
+		text-align: center;
+		z-index: 9999;
+		padding-bottom: 5px;
+}
+
+a.admin-sets span {
+		background-image: url([[pix:theme|gearicon]]);
+		background-repeat: no-repeat;
+		margin: 5px 0 0 1px;
+		width: 57px;
+		height: 44px;
+		display: block;
+}
+
+
+/******* for page header *******/
+
+header#page-header {
+   background-color: #fff;
+   margin-bottom: 20px;
+   border-bottom: #088a4a 20px solid;
+   margin: 0 auto;
+}
+
+header#page-header h1 {
+  float: left;
+  width: 100%;
+  padding-left: 5%;
+}
+
+header#page-header h1 a {
+  color: #088a4a;
+}
+
+header#page-header h1 img{
+  height: 70px;
+  width: 100px;
+  padding-left: 20px;
+  float: left;
+}
+
+
+/***** starts dropdown menu *****/
+
+.shadow {
+  width: 100%;
+  height: 90px;
+  display: block;
+  clear: both;
+}
+
+.shadow ul {
+  list-style-type: none;
+  margin: 0 auto;
+  border: 0px;
+  width: auto;
+  height: 100%;
+  position: relative;
+  float: right;
+  padding-right: 88px;
+}
+
+.menulist li{
+  float: left;
+  display: inline-block;
+  height: 100%;
+}
+
+.menulist a.main {
+  float: left;
+  color: #404040;
+  padding-top: 35px;
+  text-decoration: none;
+  padding-right: 20%;
+  padding-left: 14%;
+  font-family: 'Roboto Condensed', sans-serif;
+  height: 100%;
+  display: inline-block;
+}
+
+
+
+.shadow ul > li > a.newmainlist {
+  color: white;
+  background: #088a4a;
+  height: 72px;
+  background: -moz-linear-gradient(top, #07713d 0%, #088a4a 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #07713d), color-stop(100%, #088a4a));
+	background: -webkit-linear-gradient(top, #07713d 0%, #088a4a 100%);
+	background: -o-linear-gradient(top, #07713d 0%, #088a4a 100%);
+	background: -ms-linear-gradient(top, #07713d 0%, #088a4a 100%);
+	background: linear-gradient(to bottom, #07713d 0%, #088a4a 100%);
+	background: filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#07713d', endColorstr='#088a4a',GradientType=0 );
+}
+
+
+ul.dropdown {
+  display: none;
+}
+
+
+#main-navigation > li > ul.dropdown {
+  position: absolute;
+  top: 100%;
+  width: 25%;
+  height: auto;
+  background: white;
+  display: none;
+  padding: 15px;
+  z-index: 9999;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 0px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  box-shadow: 0 10px 26px #BBBBBB;
+  -webkit-box-shadow: 0 10px 26px #BBBBBB;
+}
+
+ul.dropdown li {
+  float: left;
+  width: 100%;
+  height: 4%;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 4px;
+  padding-bottom: 3px;
+}
+
+ul.dropdown li a {
+  color: gray;
+  padding-left: 2px;
+  padding-left: 2px;
+  padding-left: 2px;
+  padding-left: 2px;
+}
+
+ul.dropdown li a:hover {
+  color:white;
+  text-decoration: none;
+}
+ul.dropdown li:hover {
+  background: #088a4a;
+  width: 100%;
+}
+
+/*********** end dropdown **********/
+
+
+/************ starts breadcrumbs nav menu *************/
+
+nav#pageheader-nav ul.breadcrumb li a {
+  color: #088a4a;
+}
+
+
+/***********************/
+
+/*************/
+
+div#bodymaincontent .sitetopic {
+  display: none;
+}
+
+/***********/
+
+
+
+
+.container-fluid {
+  background: white;
+}
+
+button.btn {
+  background: #088a4a;
+  border-radius: 0px;
+}
+
+
+/** login page **/
+
+.mainlogin {
+  width: 100%;
+  height: 350px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.mainlogin> .span6 {
+  height: 100%;
+}
+
+.mainlogin> .span6#auth-login {
+  background-image: url([[pix:theme|ruleseperator]]);
+  background-repeat: repeat-y;
+  background-position: 100% 0;
+}
+
+h2.short_headline {
+  border-bottom: 1px solid #d8dfe5;
+  text-transform: lowercase;
+  line-height: normal;
+  color: #758694;
+  width: 72%;
+  text-align: start;
+  margin: 0 auto;
+  padding-bottom: 16px;
+  margin-bottom: 2%;
+  padding-top: 2%;
+}
+
+
+h2.short_headline span {
+  border-bottom: 7px solid #d8dfe5;
+  margin: 0 0 1em 0;
+  padding-bottom: 10px;
+}
+
+div.float-left {
+  width: 100%;
+  float: left;
+  padding-top: 50px;
+}
+
+
+div.float-left ul li {
+  list-style-type: none;
+  width: 220px;
+  padding-bottom: 5%;
+  padding-left: 29%;
+  margin-bottom: 1%;
+}
+
+div.float-left p {
+  width: 180px;
+  margin: 0 auto;
+}
+
+div.float-left ul li a img {
+  height: 33px;
+  width: 234px;
+  border-radius: 5px;
+}
+
+div.loginbox {
+  width: 100%;
+}
+
+.loginpanel{
+   width: 100%;
+}
+
+.loginpanel h2 {
+  display: none;
+}
+
+.moreproviderlink {
+  display: none;
+}
+
+/*****/
+
+input[type="submit"], input[type="button"], button, .button .btn {
+  border: 0;
+	cursor: pointer;
+	background: #088a4a;
+  text-transform: capitalize;
+	color: whitesmoke;
+	font-weight: bolder;
+	border-radius: 0px;
+	margin-top: 5px;
+	padding: 7px 10px;
+	font: 15px/12px 'quattrocentoregular', Arial, Helvetica, sans-serif;
+	text-shadow: none;
+}
+
+/****** body content *******/
+
+#page.container-fluid {
+ padding-right: 0px;
+ padding-left: 0px;
+}
+
+/* CSS  for slider */
+
+div#lemmon-slider {
+  width: 100%;
+  height: 371px;
+  position: relative;
+}
+
+a.next-page {
+  position: absolute;
+  display: block;
+  opacity: .8;
+  background: #6d767e;
+  background-image: url([[pix:theme|sliderarrows]]);
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  border-left: 3px solid #fff;
+  height: 350px;
+  top: 0;
+  width: 40px;
+  z-index: 200;
+  right: 0;
+}
+
+a.prev-page {
+  position: absolute;
+  display: block;
+  opacity: .8;
+  background: #6d767e;
+  background-image: url([[pix:theme|sliderarrows]]);
+  background-repeat: no-repeat;
+  background-position: -39px 50%;
+  border-right: 3px solid #FFFFFF;
+  height: 350px;
+  left: 0;
+  top: 0;
+  width: 40px;
+  z-index: 200;
+}
+
+.slider {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+.slider ul {
+  width: 1205px;
+  height: 350px;
+  margin: 0;
+  padding: 0;
+}
+.slider li {
+  float: left;
+  list-style-type: none;
+  position: relative;
+  margin: 0 0 0 3px;
+}
+
+.slider img {
+  height: 350px;
+}
+
+/* IE6 issues */
+.slider ul {
+  width:1205px;
+  height: 100px;
+}
+
+.row-fluid .span12 {
+  width: 100%;
+}
+
+/********** after slider body content ***********/
+
+div.bodydetails {
+  width: 95%;
+}
+
+.upcomingevents {
+  text-align: left;
+}
+
+div.shortnote {
+  background-image: url([[pix:theme|bodycut]]);
+  background-position: 100% 13px;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+div.welcomemsg {
+  width: 86%;
+  padding-left: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  padding-right: 2%;
+}
+
+.welcomemsg img {
+  width: 100%;
+}
+
+div.bodytexts {
+  margin-top: 2%;
+  margin-left: 5%;
+  float: left;
+}
+
+div.bodytexts > div {
+  padding: 15px 0 25px 0;
+  width: 25%;
+  text-align: center;
+  float: left;
+}
+
+div.forsupport {
+  margin-right: 7%;
+}
+
+div.texts p {
+  text-align: center;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+div.forcourses {
+  margin-right: 7%;
+}
+
+div.quotations {
+  float: left;
+  width: 85%;
+  background: #f1f1f1;
+  margin-top: 2%;
+  margin-left: 5%;
+}
+
+div.quoteshead {
+  font-size: 2em;
+  color: gray;
+  float: left;
+  margin-left: 5%;
+  margin-top: 3%;
+  text-decoration: underline;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+blockquote {
+  border-left: none;
+}
+
+blockquote p {
+  font-size: 16px;
+}
+
+blockquote small {
+  display: block;
+  line-height: 20px;
+  color: #088a4a;
+  font-weight: normal;
+  text-align: end;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+div.quote {
+  float: left;
+  margin-top: 2%;
+  margin-left: 5%;
+  width: 86%;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+}
+
+div.quote .allprojectsbtn {
+  border: 0;
+  float: right;
+	cursor: pointer;
+	background: #088a4a;
+  text-transform: capitalize;
+	color: whitesmoke;
+	font-weight: bolder;
+	border-radius: 0px;
+	margin-top: 5px;
+	margin-bottom: 7px;
+	padding: 7px 10px;
+	font: 15px/12px 'quattrocentoregular', Arial, Helvetica, sans-serif;
+	text-shadow: none;
+}
+
+.dropdown-toggle .caret {
+  vertical-align: text-top;
+}
+
+div.group {
+  font-size: 2em;
+  color: gray;
+  text-decoration: underline;
+  padding-bottom: 2%;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/*calender*/
+
+div.dateandevents {
+  padding-right: 1%;
+  margin-right: 3%;
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+div.event {
+  font-size: 1.5em;
+  color: gray;
+  text-decoration: underline;
+  padding-bottom: 2%;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding-top: 10%;
+}
+
+div.calendar {
+  border: 1px solid #bebebe;
+  border-radius: 4px;
+  margin-right: 0;
+  margin-top: 2%;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+div.calendar table {
+  width: 100%;
+}
+div.calendar table caption{
+  text-align: center;
+}
+.calendar-controls {
+  margin-bottom: 15px;
+}
+
+.calendar-controls .arrow_link {
+  position: absolute;
+}
+
+.calendar-controls .arrow_link.previous {
+ left: 15px;
+}
+
+.calendar-controls .arrow_link.next {
+ right: 15px;
+}
+
+div.forgroups {
+  width: 100%;
+  float: left;
+  margin: 4%;
+}
+
+div.span3.forgroup {
+ background: #f1f1f1;
+ border: solid 1px #f1f1f1;
+ margin-bottom: 20px;
+}
+
+div.forgroup div {
+  text-align: left;
+}
+
+div.images .pics {
+  width:100%;
+}
+
+.headings {
+  width:100%;
+  text-align: left;
+}
+
+.headings p {
+  padding-left: 10px;
+  color: #088a4a;
+  padding-top: 6px;
+}
+
+.textings {
+  text-align: left;
+  height: 92px;
+  padding-left: 10px;
+}
+
+div.textings p {
+  text-align: left;
+  padding-right: 4%;
+  padding-bottom: 4%;
+  color: #333;
+  font-size: 12px;
+}
+
+a.viewbtn {
+  float: right;
+  background: #088a4a;
+  border-radius: 0px;
+  border: 0;
+  cursor: pointer;
+  color: whitesmoke;
+  padding: 3px 14px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 15px;
+  text-shadow: none;
+  margin-bottom: 0;
+  margin-top: 1%;
+}
+
+/***** footer ******/
+
+footer#page-footer {
+  background: #262626;
+  color: whitesmoke;
+  height: 18%;
+  width: 100%;
+}
+
+div.footermain {
+  padding-left: 4%;
+}
+
+div.footermain h4 {
+  color: #098b4f;
+  float: left;
+  padding-right: 6px;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+div.contact {
+  text-align: left;
+  background-image: url([[pix:theme|cut]]);
+  background-position: 100% 10%;
+  background-repeat: no-repeat;
+}
+
+.contact p {
+  display: block;
+  clear: both;
+}
+
+.footermain div.span5 {
+  background-image: url([[pix:theme|cut]]);
+  background-position: 100% 10%;
+  background-repeat: no-repeat;
+}
+
+.newsletter p {
+  display: block;
+  clear: both;
+}
+
+.newsletter form {
+  float: left;
+}
+
+div.containersfoot {
+  text-align: left;
+}
+
+.containersfoot p {
+  display: block;
+  clear: both;
+}
+
+.footermain p, .containersfoot span, .containersfoot a, .contact a {
+  font-size: 13px;
+  color: #d2d4d4;
+}
+
+/*** footer close ***/
+
+/*styles for blog page*/
+
+#containerbox {
+  padding: 5px;
+}
+
+.isotope-item {
+  width: 284px;
+  height: auto;
+  float: left;
+  margin: 5px;
+  background: #CCC;
+}
+
+div.attachedfile .attachedimages img {
+  width: 284px;
+  height: auto;
+}
+
+div.usercomments {
+  border-bottom: 1px dotted #a3b0bb;
+}
+
+.horizontal #container {
+  height: 80%;
+}
+.containersfoot {
+	padding: 0px 10px;
+}
+
+/* Custom CSS Settings
+-------------------------*/
+[[setting:customcss]]
