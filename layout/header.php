@@ -82,26 +82,26 @@ echo $OUTPUT->doctype()
       <div class="row-fluid" style="margin: 0 auto;">
         <div class="span3">
           <h1>
-          	<a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo $SITE->fullname; ?></a>
+          	<a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo format_string($SITE->fullname); ?></a>
           </h1>
         </div> <!-- end of span3 -->
         <div class="span9">
           <div class="shadow" role="navigation">
             <ul id="main-navigation" class="menulist">
               <li id="1" class="list">
-                <a id= "children1" class="main" href="<?php echo $CFG->wwwroot;?>">HOME</a>
+                <a id= "children1" class="main" href="<?php echo $CFG->wwwroot;?>"><?php echo format_string(get_string('home')); ?></a>
               </li>
               <li id="2" class="list">
-                <a id= "children3" class="main" href="<?php echo $CFG->wwwroot.'/mod/forum/user.php?id='.$USER->id;?>">FORUM</a>
+                <a id= "children3" class="main" href="<?php echo $CFG->wwwroot.'/mod/forum/user.php?id='.$USER->id;?>"><?php echo format_string(get_string('modulenameplural', 'forum')); ?></a>
               </li>
               <li id="3" class="list">
-                <a id= "children3" class="main" href="#">SUPPORT</a>
+                <a id= "children3" class="main" href="#"><?php echo format_string(get_string('supports', 'cache')); ?></a>
                 <ul id="vistachild3" class="dropdown">
-                  <li><a href="<?php echo $CFG->wwwroot.'/blog/index.php?userid='.$USER->id;?>">BLOG</a></li>
+                  <li><a href="<?php echo $CFG->wwwroot.'/blog/index.php?userid='.$USER->id;?>"><?php echo format_string(get_string('blog', 'blog')); ?></a></li>
                 </ul>
               </li>
               <li id="4" class="list">
-                <a id= "children4" class="main" href="<?php echo $CFG->wwwroot.'/course/index.php';?>">COURSES</a>
+                <a id= "children4" class="main" href="<?php echo $CFG->wwwroot.'/course/index.php';?>"><?php echo format_string(get_string('courses', 'calendar')); ?></a>
               </li>
             </ul>
           </div>

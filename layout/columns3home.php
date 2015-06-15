@@ -239,7 +239,7 @@ if (!empty($body->value)) {
 											<?php
 } else {
 ?>
-											<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo 'Support'; ?></b></p>
+											<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo format_string(get_string('supports', 'cache')); ?></b></p>
 											<?php
 }
 ?>
@@ -291,7 +291,7 @@ if (!empty($body->value)) {
 										<?php
 } else {
 ?>
-                    <p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo 'Course'; ?></b></p>
+                    <p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo format_string(get_string('course', 'calendar')); ?></b></p>
                     <?php
 }
 ?>
@@ -345,7 +345,7 @@ if (!empty($body->value)) {
 <?php
 } else {
 ?>
-                    <p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo 'Forum'; ?></b></p>
+                    <p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo format_string(get_string('modulenameplural','forum')); ?></b></p>
 <?php
 }
 ?>
@@ -412,7 +412,7 @@ if (!empty($body->value)) {
 							<div class="row-fluid">
 								<div class="span12">
 									<div class="upcomingevents">
-										<div class="event"><b><?php echo "UPCOMING EVENTS"; ?></b></div>
+										<div class="event"><b><?php echo format_string(get_string('upcomingevents', 'calendar')); ?></b></div>
 										<?php
 $array = array();
 $course = $DB->get_records_sql('select id from {course}');
@@ -459,7 +459,7 @@ echo $calendar;
 			<div class="row-fluid" style="margin: 0 auto;">
 				<div class="span12" style="width: 100%;">
 					<div class="forgroups">
-						<div class="row-fluid"><div class="span12"><div class="group">Course Category</div></div></div>  <!-- HEADING -->
+						<div class="row-fluid"><div class="span12"><div class="group"><?php echo format_string(get_string('coursecategory')); ?></div></div></div>  <!-- HEADING -->
 						<div id="eachgroup-content2" class="row-fluid">
               <?php
 $groups = $DB->get_records_sql('select mcat.id,mcat.name,mcat.description from {course_categories} mcat');
