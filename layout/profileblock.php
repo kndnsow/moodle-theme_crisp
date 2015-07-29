@@ -51,7 +51,7 @@ if (!isloggedin() or isguestuser()) {
     <img class="profilepic" src="'.$CFG->wwwroot.'/user/pix.php?file=/'.$USER->id.'/f1.jpg"
     width="30px" height="30px" title="'.$USER->firstname.' '.$USER->lastname.'"
     alt="'.$USER->firstname.' '.$USER->lastname.'"/>'.$USER->firstname;
-    if ( $CFG->version >= '2015051100.03' ) {
+    if ( $CFG->version >= '2015051100.00' ) {
         $file = get_string('privatefiles');
     } else {
         $file = get_string('myfiles');
