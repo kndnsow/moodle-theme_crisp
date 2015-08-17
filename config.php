@@ -71,7 +71,7 @@ $THEME->layouts = array(
       'options' => array('nonavbar' => true),
   ),
   'course' => array(
-      'file' => 'columns3home.php',
+      'file' => 'columns2.php',
       'regions' => array('side-pre'),
       'defaultregion' => 'side-pre',
       'options' => array('nonavbar' => true),
