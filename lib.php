@@ -27,96 +27,6 @@
  * @copyright 2014 dualcube {@link http://dualcube.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-/**
- * Parses CSS before it is cached.
- *
- * This function can make alterations and replace patterns within the CSS.
- *
- * @param string $css The CSS
- * @param theme_config $theme The theme config object.
- * @return string The parsed CSS The parsed CSS.
- */
-function theme_crisp_process_css($css, $theme) {
-
-    // Set the background image for the logo.
-    $logo = $theme->setting_file_url('logo', 'logo');
-    $css = theme_crisp_set_logo($css, $logo);
-
-    // Set custom CSS.
-    if (!empty($theme->settings->customcss)) {
-        $customcss = $theme->settings->customcss;
-    } else {
-        $customcss = null;
-    }
-    $css = theme_crisp_set_customcss($css, $customcss);
-
-    return $css;
-}
-
-
-
-
-/**
- * Adds the logo to CSS.
- *
- * @param string $css The CSS.
- * @param string $logo The URL of the logo.
- * @return string The parsed CSS
- */
-function theme_crisp_set_logo($css, $logo) {
-    $tag = '[[setting:logo]]';
-    $replacement = $logo;
-    if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
-/**
- * Serves any files associated with the theme settings.
- *
- * @param stdClass $course
- * @param stdClass $cm
- * @param context $context
- * @param string $filearea
- * @param array $args
- * @param bool $forcedownload
- * @param array $options
- * @return bool
- */
-
-function theme_crisp_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    if ($context->contextlevel == CONTEXT_SYSTEM and $filearea === 'logo') {
-        $theme = theme_config::load('crisp');
-        return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
-    } else {
-        send_file_not_found();
-    }
-}
-
-/**
- * Adds any custom CSS to the CSS before it is cached.
- *
- * @param string $css The original CSS.
- * @param string $customcss The custom CSS to add.
- * @return string The CSS which now contains our custom CSS.
- */
-function theme_crisp_set_customcss($css, $customcss) {
-    $tag = '[[setting:customcss]]';
-    $replacement = $customcss;
-    if (is_null($replacement)) {
-        $replacement = '';
-    }
-
-    $css = str_replace($tag, $replacement, $css);
-
-    return $css;
-}
-
 /**
  * Returns an object containing HTML for the areas affected by settings.
  *
@@ -149,6 +59,146 @@ function theme_crisp_get_html_for_settings(renderer_base $output, moodle_page $p
 
     return $return;
 }
+function theme_crisp_get_setting($setting, $format = false) {
+    global $CFG;
+    require_once($CFG->dirroot . '/lib/weblib.php');
+    static $theme;
+    if (empty($theme)) {
+        $theme = theme_config::load('crisp');
+    }
+    if (empty($theme->settings->$setting)) {
+        return false;
+    } else if (!$format) {
+        return $theme->settings->$setting;
+    } else if ($format === 'format_text') {
+        return format_text($theme->settings->$setting, FORMAT_PLAIN);
+    } else if ($format === 'format_html') {
+        return format_text($theme->settings->$setting, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
+    } else {
+        return format_string($theme->settings->$setting);
+    }
+}
+/**
+ * Parses CSS before it is cached.
+ *
+ * This function can make alterations and replace patterns within the CSS.
+ *
+ * @param string $css The CSS
+ * @param theme_config $theme The theme config object.
+ * @return string The parsed CSS The parsed CSS.
+ */
+function theme_crisp_process_css($css, $theme) {
+    // Set the background image for the logo.
+    $logo = $theme->setting_file_url('logo', 'logo');
+    $css = theme_crisp_set_logo($css, $logo);
+    // Set custom CSS.
+    if (!empty($theme->settings->customcss)) {
+        $customcss = $theme->settings->customcss;
+    } else {
+        $customcss = null;
+    }
+    $css = theme_crisp_set_customcss($css, $customcss);
+    $thememaincolor = theme_crisp_get_setting('maincolor');
+    $css = theme_crisp_set_maincolor($css, $thememaincolor);
+    return $css;
+}
+/**
+ * Adds any custom color to the CSS before it is cached.
+ *
+ * @param string $css The original CSS.
+ * @param string $themecolor The custom CSS to add.
+ * @return string The CSS which now contains our custom CSS.
+ */
+function theme_crisp_set_maincolor($css, $themecolor) {
+    $tag = '[[setting:maincolor]]';
+    $replacement = $themecolor;
+    if (is_null($replacement)) {
+        $replacement = '#088a4a';
+    }
+    $css = str_replace($tag, $replacement, $css);
+    return $css;
+}
+
+/**
+ * Adds the logo to CSS.
+ *
+ * @param string $css The CSS.
+ * @param string $logo The URL of the logo.
+ * @return string The parsed CSS
+ */
+function theme_crisp_set_logo($css, $logo) {
+    $tag = '[[setting:logo]]';
+    $replacement = $logo;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+
+function theme_crisp_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+    static $theme;
+    if (empty($theme)) {
+        $theme = theme_config::load('crisp');
+    }
+    if ($context->contextlevel == CONTEXT_SYSTEM) {
+        if ($filearea === 'logo') {
+            return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
+        } else if ($filearea === 'slidepic1') {
+                return $theme->setting_file_serve('slidepic1', $args, $forcedownload, $options);
+        } else if ($filearea === 'slidepic2') {
+                return $theme->setting_file_serve('slidepic2', $args, $forcedownload, $options);
+        } else if ($filearea === 'slidepic3') {
+                return $theme->setting_file_serve('slidepic3', $args, $forcedownload, $options);
+        } else if ($filearea === 'slidepic4') {
+                return $theme->setting_file_serve('slidepic4', $args, $forcedownload, $options);
+        } else if ($filearea === 'slidepic5') {
+                return $theme->setting_file_serve('slidepic5', $args, $forcedownload, $options);
+        } else if ($filearea === 'slidepic6') {
+                return $theme->setting_file_serve('slidepic6', $args, $forcedownload, $options);
+        } else if ($filearea === 'picture1') {
+                return $theme->setting_file_serve('picture1', $args, $forcedownload, $options);
+        } else if ($filearea === 'favicon') {
+                return $theme->setting_file_serve('favicon', $args, $forcedownload, $options);
+        } else if ($filearea === 'pic1') {
+                return $theme->setting_file_serve('pic1', $args, $forcedownload, $options);
+        } else if ($filearea === 'pic2') {
+                return $theme->setting_file_serve('pic2', $args, $forcedownload, $options);
+        } else if ($filearea === 'pic3') {
+                return $theme->setting_file_serve('pic3', $args, $forcedownload, $options);
+        } else if ($filearea === 'img1') {
+                return $theme->setting_file_serve('img1', $args, $forcedownload, $options);
+        } else {
+            send_file_not_found();
+        }
+    } else {
+        send_file_not_found();
+    }
+}
+
+/**
+ * Adds any custom CSS to the CSS before it is cached.
+ *
+ * @param string $css The original CSS.
+ * @param string $customcss The custom CSS to add.
+ * @return string The CSS which now contains our custom CSS.
+ */
+function theme_crisp_set_customcss($css, $customcss) {
+    $tag = '[[setting:customcss]]';
+    $replacement = $customcss;
+    if (is_null($replacement)) {
+        $replacement = '';
+    }
+
+    $css = str_replace($tag, $replacement, $css);
+
+    return $css;
+}
+
+
 
 /**
  * All theme functions should start with theme_crisp_

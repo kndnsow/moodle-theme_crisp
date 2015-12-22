@@ -29,129 +29,11 @@
  */
 
 $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);?>
-<?php require('header.php'); ?>
+<?php require('header.php');
+?>
 <div id="page" class="container-fluid">
   <div id="page-content" class="row-fluid">
     <section id="region-main" class="span12">
-      <div class="row-fluid">
-        <div class="span12">
-        <div id="lemmon-slider">
-<div id="slider3" class="slider">
-<ul>
-<li><div>
-<?php 
-global $DB, $USER;
-$name = 'theme_crisp';
-$fieldname = 'slidepic1';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-where mcp.plugin = ? and mcp.name = ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-<img src="<?php echo $image->value; ?>" alt=""/>
-<?php
-} else {
-?>
-<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/vintage.jpg'; ?>" alt=""/>
-<?php
-}
-?>
-</div></li>
-<li><div>
-<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic2';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-<img src="<?php echo $image->value; ?>" alt=""/>
-<?php
-} else {
-?>
-<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/littlevisuals.jpg'; ?>" alt=""/>
-<?php
-}
-?>
-</div></li>
-<li><div>
-<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic3';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-<img src="<?php echo $image->value; ?>" alt=""/>
-<?php
-} else {
-?>
-<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/gratisography.jpg'; ?>" alt=""/>
-<?php
-}
-?>
-</div></li>
-<li><div>
-<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic4';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-<img src="<?php echo $image->value; ?>" alt=""/>
-<?php
-} else {
-?>
-<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/millionfreepictures.jpg'; ?>" alt=""/>
-<?php
-}
-?>
-</div></li>
-<li><div>
-<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic5';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-<img src="<?php echo $image->value; ?>" alt=""/>
-<?php
-} else {
-?>
-<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/pixabay.jpg'; ?>" alt=""/>
-<?php
-}
-?>
-</div></li>
-<li><div>
-<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic6';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-<img src="<?php echo $image->value; ?>" alt=""/>
-<?php
-} else {
-?>
-<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/unsplash.jpg'; ?>" alt=""/>
-<?php
-}
-?>
-</div></li>
-</ul>
-</div>
-<div class="controls">
-<a href="#" class="next-page"></a>
-<a href="#" class="prev-page"></a>
-</div>
-</div> <!-- end of lemmon slider -->
-        <?php
-        echo '<h2 class="short_headline"><span>Login to your account...</span></h2>';?>
-        </div> 
-      </div> 
       <div class="row-fluid">
         <?php echo '<div class="mainlogin">'; ?>
           <div class="span12"> 
@@ -163,17 +45,5 @@ if (!empty($image->value)) {
       </div> 
     </section>
   </div>
-  <script>
-window.onload = function(){
-// home page slider 
-$( '#slider3' ).lemmonSlider({ infinite: true });
-sliderAutoplay();
-}
-// autoplay
-var sliderTimeout = null;
-function sliderAutoplay(){
-$( '#slider3' ).trigger( 'nextSlide' );
-sliderTimeout = setTimeout( 'sliderAutoplay()', 3000 );
-}
-</script>
+</div>
 <?php require('footer.php');

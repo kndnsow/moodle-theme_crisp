@@ -56,10 +56,11 @@ $string['footnotedesc'] = 'Whatever you add to this textarea will be displayed i
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
 
+$string['favicon'] = 'Favicon';
+$string['favicondesc'] = '';
+
 $string['logo'] = 'Logo';
-$string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.<br>
-If the height of your logo is more than 75px add the following CSS rule to the Custom CSS box below.<br>
-a.logo {height: 100px;} or whatever height in pixels the logo is.';
+$string['logodesc'] = '';
 
 $string['pluginname'] = 'Crisp';
 
@@ -119,3 +120,17 @@ $string['quoteheadingtextdesc'] = 'Whatever you add to this textarea will be dis
 
 $string['picture1'] = 'welcomemsg';
 $string['picture1desc'] = 'This sets the images for welcomemsg.';
+
+/************** Counter **************/
+$string['zero'] = '0';
+$string['one'] = '1';
+$string['two'] = '2';
+$string['three'] = '3';
+$string['four'] = '4';
+$string['five'] = '5';
+$string['six'] = '6';
+$string['slidercount'] = 'No of slides';
+$string['slidercountdesc'] = '';
+/****************color*************/
+$string['maincolor'] = 'Choose theme color';
+$string['maincolordesc'] = '';

@@ -31,152 +31,158 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
+    $name = 'theme_crisp/favicon';
+    $title = get_string('favicon', 'theme_crisp');
+    $description = get_string('favicondesc', 'theme_crisp');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'favicon');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
+    $name = 'theme_crisp/logo';
+    $title = get_string('logo', 'theme_crisp');
+    $description = get_string('logodesc', 'theme_crisp');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
     // For slider.
     // Slider image1 setting.
-    $name = 'theme_crisp/slidepic1';
-    $title = get_string('slidepic1', 'theme_crisp');
-    $description = get_string('slidepic1desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL );
+    $name = 'theme_crisp/slidercount';
+    $title = get_string('slidercount', 'theme_crisp');
+    $description = get_string('slidercountdesc', 'theme_crisp');
+    $setting = new admin_setting_configselect($name, $title, $description, 6,
+    array(
+            0 => get_string('zero', 'theme_crisp'),
+            1 => get_string('one', 'theme_crisp'),
+            2 => get_string('two', 'theme_crisp'),
+            3 => get_string('three', 'theme_crisp'),
+            4 => get_string('four', 'theme_crisp'),
+            5 => get_string('five', 'theme_crisp'),
+            6 => get_string('six', 'theme_crisp'),
+        ));
+    $settings->add($setting);
+
+    for ($slidecounts = 1; $slidecounts <= get_config('theme_crisp', 'slidercount'); $slidecounts = $slidecounts + 1) {
+        $name = 'theme_crisp/slidepic'.$slidecounts;
+        $title = get_string('slidepic'.$slidecounts, 'theme_crisp');
+        $description = get_string('slidepic'.$slidecounts.'desc', 'theme_crisp');
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'slidepic'.$slidecounts);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $settings->add($setting);
+    }
+
+    $name = 'theme_crisp/maincolor';
+    $title = get_string('maincolor', 'theme_crisp');
+    $description = get_string('maincolordesc', 'theme_crisp');
+    $default = '#088a4a';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
-    // Slider image2 setting.
-    $name1 = 'theme_crisp/slidepic2';
-    $title1 = get_string('slidepic2', 'theme_crisp');
-    $description1 = get_string('slidepic2desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name1, $title1, $description1, '', PARAM_URL );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-    // Slider image3 setting.
-    $name2 = 'theme_crisp/slidepic3';
-    $title2 = get_string('slidepic3', 'theme_crisp');
-    $description2 = get_string('slidepic3desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name2, $title2, $description2, '', PARAM_URL );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-    // Slider image4 setting.
-    $name3 = 'theme_crisp/slidepic4';
-    $title3 = get_string('slidepic4', 'theme_crisp');
-    $description3 = get_string('slidepic4desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name3, $title3, $description3, '', PARAM_URL );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-    // Slider image5 setting.
-    $name4 = 'theme_crisp/slidepic5';
-    $title4 = get_string('slidepic5', 'theme_crisp');
-    $description4 = get_string('slidepic5desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name4, $title4, $description4, '', PARAM_URL );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
-    // Slider image6 setting.
-    $name5 = 'theme_crisp/slidepic6';
-    $title5 = get_string('slidepic6', 'theme_crisp');
-    $description5 = get_string('slidepic6desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name5, $title5, $description5, '', PARAM_URL );
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $settings->add($setting);
+
     // After slider.
     // Welcomemsg.
-    $name1 = 'theme_crisp/picture1';
-    $title1 = get_string('picture1', 'theme_crisp');
-    $description1 = get_string('picture1desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name1, $title1, $description1, '', PARAM_URL);
+    $name = 'theme_crisp/picture1';
+    $title = get_string('picture1', 'theme_crisp');
+    $description = get_string('picture1desc', 'theme_crisp');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'picture1');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // Main body content(support).
     // For the icon.
-    $name1 = 'theme_crisp/pic1';
-    $title1 = get_string('pic1', 'theme_crisp');
-    $description1 = get_string('pic1desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name1, $title1, $description1, '', PARAM_URL );
+    $name = 'theme_crisp/pic1';
+    $title = get_string('pic1', 'theme_crisp');
+    $description = get_string('pic1desc', 'theme_crisp');
+    $default = "";
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'pic1');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // For the heading.
-    $name1 = 'theme_crisp/supportpara';
-    $title1 = get_string('supportpara', 'theme_crisp');
-    $description1 = get_string('supportparadesc', 'theme_crisp');
-    $default1 = '';
-    $setting = new admin_setting_configtextarea($name1, $title1, $description1, $default1);
+    $name = 'theme_crisp/supportpara';
+    $title = get_string('supportpara', 'theme_crisp');
+    $description = get_string('supportparadesc', 'theme_crisp');
+    $default = '';
+    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // For the bodytext.
-    $name1 = 'theme_crisp/supportparatext';
-    $title1 = get_string('supportparatext', 'theme_crisp');
-    $description1 = get_string('supportparatextdesc', 'theme_crisp');
-    $default1 = '';
-    $setting = new admin_setting_confightmleditor($name1, $title1, $description1, $default1);
+    $name = 'theme_crisp/supportparatext';
+    $title = get_string('supportparatext', 'theme_crisp');
+    $description = get_string('supportparatextdesc', 'theme_crisp');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // Main body content(courses).
     // For the icon.
-    $name2 = 'theme_crisp/pic2';
-    $title2 = get_string('pic2', 'theme_crisp');
-    $description2 = get_string('pic2desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name2, $title2, $description2, '', PARAM_URL );
+    $name = 'theme_crisp/pic2';
+    $title = get_string('pic2', 'theme_crisp');
+    $description = get_string('pic2desc', 'theme_crisp');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'pic2' );
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // For the heading.
-    $name2 = 'theme_crisp/coursespara';
-    $title2 = get_string('coursespara', 'theme_crisp');
-    $description2 = get_string('coursesparadesc', 'theme_crisp');
-    $default2 = '';
-    $setting = new admin_setting_configtextarea($name2, $title2, $description2, $default2);
+    $name = 'theme_crisp/coursespara';
+    $title = get_string('coursespara', 'theme_crisp');
+    $description = get_string('coursesparadesc', 'theme_crisp');
+    $default = '';
+    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // For the bodytext.
-    $name2 = 'theme_crisp/coursesparatext';
-    $title2 = get_string('coursesparatext', 'theme_crisp');
-    $description2 = get_string('coursesparatextdesc', 'theme_crisp');
-    $default2 = '';
-    $setting = new admin_setting_confightmleditor($name2, $title2, $description2, $default2);
+    $name = 'theme_crisp/coursesparatext';
+    $title = get_string('coursesparatext', 'theme_crisp');
+    $description = get_string('coursesparatextdesc', 'theme_crisp');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // Main body content(forum).
     // For the icon.
-    $name3 = 'theme_crisp/pic3';
-    $title3 = get_string('pic3', 'theme_crisp');
-    $description3 = get_string('pic3desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($name3, $title3, $description3, '', PARAM_URL );
+    $name = 'theme_crisp/pic3';
+    $title = get_string('pic3', 'theme_crisp');
+    $description = get_string('pic3desc', 'theme_crisp');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'pic3');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // For the heading.
-    $name3 = 'theme_crisp/forumpara';
-    $title3 = get_string('forumpara', 'theme_crisp');
-    $description3 = get_string('forumparadesc', 'theme_crisp');
-    $default3 = '';
-    $setting = new admin_setting_configtextarea($name3, $title3, $description3, $default3);
+    $name = 'theme_crisp/forumpara';
+    $title = get_string('forumpara', 'theme_crisp');
+    $description = get_string('forumparadesc', 'theme_crisp');
+    $default = '';
+    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // For the bodytext.
-    $name3 = 'theme_crisp/forumparatext';
-    $title3 = get_string('forumparatext', 'theme_crisp');
-    $description3 = get_string('forumparatextdesc', 'theme_crisp');
-    $default3 = '';
-    $setting = new admin_setting_confightmleditor($name3, $title3, $description3, $default3);
+    $name = 'theme_crisp/forumparatext';
+    $title = get_string('forumparatext', 'theme_crisp');
+    $description = get_string('forumparatextdesc', 'theme_crisp');
+    $default = '';
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // For Grups image.
     // For the image.
-    $names1 = 'theme_crisp/img1';
-    $titles1 = get_string('img1', 'theme_crisp');
-    $descriptions1 = get_string('img1desc', 'theme_crisp');
-    $setting = new admin_setting_configtext($names1, $titles1, $descriptions1, '', PARAM_URL );
+    $names = 'theme_crisp/img1';
+    $titles = get_string('img1', 'theme_crisp');
+    $descriptions = get_string('img1desc', 'theme_crisp');
+    $setting = new admin_setting_configstoredfile($names, $titles, $descriptions, 'img1');
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // For the block quote para.
     // For the heading.
-    $names4 = 'theme_crisp/quoteheading';
-    $titles4 = get_string('quoteheading', 'theme_crisp');
-    $descriptions4 = get_string('quoteheadingdesc', 'theme_crisp');
-    $defaults4 = '';
-    $setting = new admin_setting_configtextarea($names4, $titles4, $descriptions4, $defaults4);
+    $names = 'theme_crisp/quoteheading';
+    $titles = get_string('quoteheading', 'theme_crisp');
+    $descriptions = get_string('quoteheadingdesc', 'theme_crisp');
+    $defaults = '';
+    $setting = new admin_setting_configtextarea($names, $titles, $descriptions, $defaults);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
     // For the bodytext.
-    $names4 = 'theme_crisp/quoteheadingtext';
-    $titles4 = get_string('quoteheadingtext', 'theme_crisp');
-    $descriptions4 = get_string('quoteheadingtextdesc', 'theme_crisp');
-    $defaults4 = '';
-    $setting = new admin_setting_confightmleditor($names4, $titles4, $descriptions4, $defaults4);
+    $names = 'theme_crisp/quoteheadingtext';
+    $titles = get_string('quoteheadingtext', 'theme_crisp');
+    $descriptions = get_string('quoteheadingtextdesc', 'theme_crisp');
+    $defaults = '';
+    $setting = new admin_setting_confightmleditor($names, $titles, $descriptions, $defaults);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
 }

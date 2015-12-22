@@ -47,10 +47,8 @@ if (!isloggedin() or isguestuser()) {
 } else {
     echo '<ul class="nav">
 		<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#cm_submenu_5">
-    <img class="profilepic" src="'.$CFG->wwwroot.'/user/pix.php?file=/'.$USER->id.'/f1.jpg"
-    width="30px" height="30px" title="'.$USER->firstname.' '.$USER->lastname.'"
-    alt="'.$USER->firstname.' '.$USER->lastname.'"/>'.$USER->firstname;
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#cm_submenu_5">'
+    .$OUTPUT->user_profile_picture()."  ".$USER->firstname."  ".$USER->lastname;
     if ( $CFG->version >= '2015051100.00' ) {
         $file = get_string('privatefiles');
     } else {

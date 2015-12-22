@@ -31,7 +31,40 @@
 
 require_once($CFG->dirroot.'/calendar/lib.php');
 $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);
-global $DB, $USER;
+global $DB, $USER, $PAGE;
+
+$hasslider1 = $CFG->wwwroot.'/theme/crisp/img/vintage.jpg';
+$hasslider2 = $CFG->wwwroot.'/theme/crisp/img/littlevisuals.jpg';
+$hasslider3 = $CFG->wwwroot.'/theme/crisp/img/gratisography.jpg';
+$hasslider4 = $CFG->wwwroot.'/theme/crisp/img/millionfreepictures.jpg';
+$hasslider5 = $CFG->wwwroot.'/theme/crisp/img/pixabay.jpg';
+$hasslider6 = $CFG->wwwroot.'/theme/crisp/img/unsplash.jpg';
+$haswelcomemsg = $CFG->wwwroot. '/theme/crisp/pix/titled.png';
+$haspic1 = $PAGE->theme->setting_file_url("pic1", "pic1");
+if (!empty($haspic1)) {
+    $haspic1 = $PAGE->theme->setting_file_url("pic1", "pic1");
+} else {
+    $haspic1 = $CFG->wwwroot. '/theme/crisp/pix/attach.png';
+}
+$haspic2 = $PAGE->theme->setting_file_url("pic2", "pic2");
+if (!empty($haspic2)) {
+    $haspic2 = $PAGE->theme->setting_file_url("pic2", "pic2");
+} else {
+    $haspic2 = $CFG->wwwroot. '/theme/crisp/pix/course.png';
+}
+$haspic3 = $PAGE->theme->setting_file_url("pic3", "pic3");
+if (!empty($haspic3)) {
+    $haspic3 = $PAGE->theme->setting_file_url("pic3", "pic3");
+} else {
+    $haspic3 = $CFG->wwwroot. '/theme/crisp/pix/forum.png';
+}
+
+$hascatimg = $PAGE->theme->setting_file_url("img1", "img1");
+if (!empty($hascatimg)) {
+    $hascatimg = $PAGE->theme->setting_file_url("img1", "img1");
+} else {
+    $hascatimg = $CFG->wwwroot. '/theme/crisp/pix/publicdomainpictures.jpg';
+}
 if (right_to_left()) {
     $regionbsid = 'region-bs-main-and-post';
 } else {
@@ -62,109 +95,36 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 				<div class="span12">
 					<div id="lemmon-slider">
 						<div id="slider3" class="slider">
-							<ul>
+							<ul><?php if (get_config('theme_crisp', 'slidercount') > 0) { ?>
+<?php 
+    for ($slidecounts = 1; $slidecounts <= get_config('theme_crisp', 'slidercount'); $slidecounts = $slidecounts + 1) {?>
 								<li><div>
+								<img src="<?php echo $PAGE->theme->setting_file_url("slidepic".$slidecounts, "slidepic".$slidecounts); ?>" alt=""/>
+								</div></li>
 								<?php 
-                $name = 'theme_crisp';
-                $fieldname = 'slidepic1';
-                $image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-                  where mcp.plugin = ? and mcp.name = ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-								<img src="<?php echo $image->value; ?>" alt=""/>
-<?php
-} else {
-?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/vintage.jpg'; ?>" alt=""/>
-<?php
+    }
+} else { ?>
+									<li><div>
+										<img src="<?php echo $hasslider1; ?>" alt=""/>
+									</div></li>
+									<li><div>
+										<img src="<?php echo $hasslider2; ?>" alt=""/>
+									</div></li>
+									<li><div>
+										<img src="<?php echo $hasslider3; ?>" alt=""/>
+									</div></li>
+									<li><div>
+										<img src="<?php echo $hasslider4; ?>" alt=""/>
+									</div></li>
+									<li><div>
+										<img src="<?php echo $hasslider5; ?>" alt=""/>
+									</div></li>
+									<li><div>
+										<img src="<?php echo $hasslider6; ?>" alt=""/>
+									</div></li>
+								<?php 
 }
 ?>
-								</div></li>
-								<li><div>
-								<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic2';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-                <img src="<?php echo $image->value; ?>" alt=""/>
-                <?php
-} else {
-?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/littlevisuals.jpg'; ?>" alt=""/>
-								<?php
-}
-?>
-								</div></li>
-								<li><div>
-								<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic3';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-                <img src="<?php echo $image->value; ?>" alt=""/>
-                <?php
-} else {
-?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/gratisography.jpg'; ?>" alt=""/>
-								<?php
-}
-?>
-								</div></li>
-								<li><div>
-								<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic4';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-                <img src="<?php echo $image->value; ?>" alt=""/>
-                <?php
-} else {
-?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/millionfreepictures.jpg'; ?>" alt=""/>
-								<?php
-}
-?>
-								</div></li>
-								<li><div>
-								<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic5';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-                <img src="<?php echo $image->value; ?>" alt=""/>
-                <?php
-} else {
-?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/pixabay.jpg'; ?>" alt=""/>
-								<?php
-}
-?>
-								</div></li>
-								<li><div>
-								<?php 
-$name = 'theme_crisp';
-$fieldname = 'slidepic6';
-$image = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($image->value)) {
-?>
-                <img src="<?php echo $image->value; ?>" alt=""/>
-                <?php
-} else {
-?>
-								<img src="<?php echo $CFG->wwwroot.'/theme/'.$CFG->theme.'/img/unsplash.jpg'; ?>" alt=""/>
-								<?php
-}
-?>
-								</div></li>
 							</ul>
 						</div>
 						<div class="controls">
@@ -174,58 +134,25 @@ if (!empty($image->value)) {
 					</div> <!-- end of lemmon slider -->
 				</div> 
 			</div> 
-			<script>
-				window.onload = function(){
-         // home page slider 
-			  $( '#slider3' ).lemmonSlider({ infinite: true });
-					sliderAutoplay();
-			  }
-			  // autoplay
-			  var sliderTimeout = null;
-			  function sliderAutoplay(){
-				  $( '#slider3' ).trigger( 'nextSlide' );
-				  sliderTimeout = setTimeout( 'sliderAutoplay()', 3000 );
-			  }
-			</script>
+			
 			<div class="bodydetails">
 				<div class="row-fluid">
 					<div class="span8">
 						<div class="shortnote">
-							<?php
-$pluginname = 'theme_crisp';
-$fieldname = 'picture1';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name= ?', array($name, $fieldname));
-if (!empty($body->value)) {
-?>
-              <div class="welcomemsg"><img src="<?php echo $body->value; ?>"/></div>
-              <?php
-} else {
-?>
-              <div class="welcomemsg"><img src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/pix/titled.png';?>"/></div>
-              <?php
-}
-?>
+							<?php $haswelcome = $PAGE->theme->setting_file_url("picture1", "picture1");
+if (!empty($haswelcome)) { ?>
+              				<div class="welcomemsg"><img src="<?php echo $PAGE->theme->setting_file_url("picture1", "picture1"); ?>"/></div>
+              				<?php
+} else { ?>
+              				<div class="welcomemsg"><img src="<?php echo $haswelcomemsg; ?>"/></div>
+              				<?php 
+} ?>
+              	
 								<div class="bodytexts">
 									<div class="forsupport">
 										<div class="icons">
-											<?php  // For the icon.
-$pluginname = 'theme_crisp';
-$fieldname = 'pic1';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-?>
 											<a href="<?php echo $CFG->wwwroot.'/blog/index.php?userid='.$USER->id;?>">
-											<img class="pics" src="<?php echo $body->value; ?>"/></a>
-											<?php
-} else {
-?>
-											<a href="<?php echo $CFG->wwwroot.'/blog/index.php?userid='.$USER->id;?>">
-											<img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/pix/attach.png'; ?>"/></a>
-											<?php
-}
-?>
+											<img class="pics" src="<?php echo $haspic1; ?>"/></a>
 										</div>
 										<div class="heads">
 <?php
@@ -235,11 +162,11 @@ $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
   where mcp.plugin = ? and mcp.name= ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
-											<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
+											<p style="padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
 											<?php
 } else {
 ?>
-											<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo format_string(get_string('supports', 'cache')); ?></b></p>
+											<p style="padding-top: 6px; font-size: 17px;"><b><?php echo format_string(get_string('supports', 'cache')); ?></b></p>
 											<?php
 }
 ?>
@@ -262,22 +189,7 @@ $sstr = substr($str, 0, 165) . '...';
 									</div> <!-- end of forsupport -->
 									<div class="forcourses">
 										<div class="icons">
-<?php
-$pluginname = 'theme_crisp';// For the icon.
-$fieldname = 'pic2';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-?>
-											<a href="<?php echo $CFG->wwwroot.'/course/index.php';?>"><img class="pics" src="<?php echo $body->value; ?>"/></a>
-											<?php
-} else {
-?>
-											<a href="<?php echo $CFG->wwwroot.'/course/index.php';?>">
-											<img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/pix/course.png'; ?>"/></a>
-											<?php
-}
-?>
+											<a href="<?php echo $CFG->wwwroot.'/course/index.php';?>"><img class="pics" src="<?php echo $haspic2; ?>"/></a>
 										</div>
 									<div class="heads">
 										<?php  // For the heading.
@@ -287,11 +199,12 @@ $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
   where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
-										<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
+										<p style="padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
 										<?php
 } else {
 ?>
-                    <p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo format_string(get_string('course', 'calendar')); ?></b></p>
+                    <p style="padding-top: 6px; font-size: 17px;"><b>
+                    <?php echo format_string(get_string('course', 'calendar')); ?></b></p>
                     <?php
 }
 ?>
@@ -314,23 +227,8 @@ $sstr = substr($str, 0, 165) . '...';
 								</div>  <!-- end of forcourses -->
 								<div class="forforum">
 									<div class="icons">
-<?php
-$pluginname = 'theme_crisp';// For icon.
-$fieldname = 'pic3';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-?>
 										<a href="<?php echo $CFG->wwwroot.'/mod/forum/user.php?id='.$USER->id;?>">
-										<img class="pics" src="<?php echo $body->value; ?>"/></a>
-										<?php
-} else {
-?>
-                    <a href="<?php echo $CFG->wwwroot.'/mod/forum/user.php?id='.$USER->id;?>">
-                    <img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/pix/forum.png'; ?>"/></a>
-                    <?php
-}
-?>
+										<img class="pics" src="<?php echo $haspic3; ?>"/></a>
 									</div>
 									<div class="heads">
 <?php
@@ -341,11 +239,12 @@ $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
   where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
 if (!empty($body->value)) {
 ?>
-										<p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
+										<p style="padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
 <?php
 } else {
 ?>
-                    <p style="color: #088a4a; padding-top: 6px; font-size: 17px;"><b><?php echo format_string(get_string('modulenameplural','forum')); ?></b></p>
+                    <p style="padding-top: 6px; font-size: 17px;"><b>
+                    <?php echo format_string(get_string('modulenameplural', 'forum')); ?></b></p>
 <?php
 }
 ?>
@@ -459,7 +358,8 @@ echo $calendar;
 			<div class="row-fluid" style="margin: 0 auto;">
 				<div class="span12" style="width: 100%;">
 					<div class="forgroups">
-						<div class="row-fluid"><div class="span12"><div class="group"><?php echo format_string(get_string('coursecategory')); ?></div></div></div>  <!-- HEADING -->
+						<div class="row-fluid"><div class="span12"><div class="group">
+						<?php echo format_string(get_string('coursecategory')); ?></div></div></div>  <!-- HEADING -->
 						<div id="eachgroup-content2" class="row-fluid">
               <?php
 $groups = $DB->get_records_sql('select mcat.id,mcat.name,mcat.description from {course_categories} mcat');
@@ -468,22 +368,7 @@ if (isset($groups) && !empty($groups)) {
 ?>
                   <div id="<?php echo $groupscat->id; ?>" class="span3 forgroup">
                     <div class="images">
-<?php
-        // For the icon.
-        $pluginname = 'theme_crisp';
-        $fieldname = 'img1';
-        $body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-            where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-        if (!empty($body->value)) {
-?>
-               <img class="pics" src="<?php echo $body->value; ?>"/>
-<?php
-        } else {
-?>
-               <img class="pics" src="<?php echo $CFG->wwwroot. '/theme/'. $CFG->theme. '/img/publicdomainpictures.jpg'; ?>"/>
-<?php
-        }
-?>
+               <img class="pics" src="<?php echo $hascatimg; ?>"/>
                     </div>
                     <div class="headings">
                       <p><b><?php echo $groupscat->name; ?></b></p>
@@ -511,4 +396,17 @@ echo $OUTPUT->main_content();
 		</section>
 	</div>
 </div>
+<script>
+	window.onload = function(){
+// home page slider 
+  $( '#slider3' ).lemmonSlider({ infinite: true });
+		sliderAutoplay();
+  }
+  // autoplay
+  var sliderTimeout = null;
+  function sliderAutoplay(){
+	  $( '#slider3' ).trigger( 'nextSlide' );
+	  sliderTimeout = setTimeout( 'sliderAutoplay()', 3000 );
+  }
+</script>
 <?php require('footer.php');

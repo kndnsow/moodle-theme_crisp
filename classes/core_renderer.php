@@ -43,4 +43,24 @@ class theme_crisp_core_renderer extends theme_bootstrapbase_core_renderer {
         }
         return parent::context_header($headerinfo, $headinglevel);
     }
+    /** 
+     * overridding favicon function.
+     */
+    public function favicon() {
+        GLOBAL $PAGE, $CFG;
+        $checkfavicon = $PAGE->theme->setting_file_url('favicon', 'favicon');
+        if (!empty($checkfavicon)) {
+            return $PAGE->theme->setting_file_url('favicon', 'favicon');
+        } else {
+            return $CFG->wwwroot.'/theme/crisp/pix/favicon.ico';
+        }
+    }
+    /** 
+     * overridding user_profile_picture function.
+     */
+    public function user_profile_picture() {
+        GLOBAL $USER;
+        $userpic = parent::user_picture($USER, array('link' => false, 'size' => 28));
+        return $userpic;
+    }
 }

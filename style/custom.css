@@ -4,17 +4,22 @@
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-a.logo {
+.logo {
     background: url([[setting:logo]]) no-repeat 0 0;
     display: block;
     float: left;
     height: 75px;
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 50%;
+    background-size: contain;
 }
-
-.dir-rtl a.logo {
+.sitename {
+  float: left;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+.dir-rtl .logo {
     background: url([[setting:logo]]) no-repeat 100% 0;
     display: block;
     float: right;
@@ -124,7 +129,7 @@ a.admin-sets span {
 header#page-header {
    background-color: #fff;
    margin-bottom: 20px;
-   border-bottom: #088a4a 20px solid;
+   border-bottom: [[setting:maincolor]] 20px solid;
    margin: 0 auto;
 }
 
@@ -135,7 +140,7 @@ header#page-header h1 {
 }
 
 header#page-header h1 a {
-  color: #088a4a;
+  color: [[setting:maincolor]];
 }
 
 header#page-header h1 img{
@@ -188,15 +193,8 @@ header#page-header h1 img{
 
 .shadow ul > li > a.newmainlist {
   color: white;
-  background: #088a4a;
+  background: [[setting:maincolor]];
   height: 72px;
-  background: -moz-linear-gradient(top, #07713d 0%, #088a4a 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #07713d), color-stop(100%, #088a4a));
-	background: -webkit-linear-gradient(top, #07713d 0%, #088a4a 100%);
-	background: -o-linear-gradient(top, #07713d 0%, #088a4a 100%);
-	background: -ms-linear-gradient(top, #07713d 0%, #088a4a 100%);
-	background: linear-gradient(to bottom, #07713d 0%, #088a4a 100%);
-	background: filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#07713d', endColorstr='#088a4a',GradientType=0 );
 }
 
 
@@ -246,7 +244,7 @@ ul.dropdown li a:hover {
   text-decoration: none;
 }
 ul.dropdown li:hover {
-  background: #088a4a;
+  background: [[setting:maincolor]];
   width: 100%;
 }
 
@@ -256,7 +254,7 @@ ul.dropdown li:hover {
 /************ starts breadcrumbs nav menu *************/
 
 nav#pageheader-nav ul.breadcrumb li a {
-  color: #088a4a;
+  color: [[setting:maincolor]];
 }
 
 
@@ -278,10 +276,21 @@ div#bodymaincontent .sitetopic {
 }
 
 button.btn {
-  background: #088a4a;
+  background: [[setting:maincolor]];
   border-radius: 0px;
 }
-
+button:hover, input.form-submit:hover, input[type="button"]:hover, input[type="submit"]:hover,
+input[type="reset"]:hover, button:focus, input.form-submit:focus, input[type="button"]:focus, input[type="submit"]:focus,
+input[type="reset"]:focus, button:active, input.form-submit:active, input[type="button"]:active, input[type="submit"]:active,
+input[type="reset"]:active, button.active, input.form-submit.active, input[type="button"].active, input[type="submit"].active,
+input[type="reset"].active, button.disabled, input.form-submit.disabled, input[type="button"].disabled, input[type="submit"].disabled,
+input[type="reset"].disabled, button[disabled], input.form-submit[disabled], input[type="button"][disabled],
+input[type="submit"][disabled], input[type="reset"][disabled],.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus,
+.dropdown-submenu:hover>a, .dropdown-submenu:focus>a{
+    background-color: [[setting:maincolor]] !important;
+    color: whitesmoke;
+    background-image: none !important;
+}
 
 /** login page **/
 
@@ -369,7 +378,7 @@ div.loginbox {
 input[type="submit"], input[type="button"], button, .button .btn {
   border: 0;
 	cursor: pointer;
-	background: #088a4a;
+	background: [[setting:maincolor]];
   text-transform: capitalize;
 	color: whitesmoke;
 	font-weight: bolder;
@@ -548,7 +557,7 @@ blockquote p {
 blockquote small {
   display: block;
   line-height: 20px;
-  color: #088a4a;
+  color: [[setting:maincolor]];
   font-weight: normal;
   text-align: end;
   font-family: 'Roboto Condensed', sans-serif;
@@ -569,7 +578,7 @@ div.quote .allprojectsbtn {
   border: 0;
   float: right;
 	cursor: pointer;
-	background: #088a4a;
+	background: [[setting:maincolor]];
   text-transform: capitalize;
 	color: whitesmoke;
 	font-weight: bolder;
@@ -610,6 +619,7 @@ div.event {
   padding-bottom: 2%;
   font-family: 'Roboto Condensed', sans-serif;
   padding-top: 10%;
+  text-align: center;
 }
 
 div.calendar {
@@ -671,7 +681,7 @@ div.images .pics {
 
 .headings p {
   padding-left: 10px;
-  color: #088a4a;
+  color: [[setting:maincolor]];
   padding-top: 6px;
 }
 
@@ -691,7 +701,7 @@ div.textings p {
 
 a.viewbtn {
   float: right;
-  background: #088a4a;
+  background: [[setting:maincolor]];
   border-radius: 0px;
   border: 0;
   cursor: pointer;
@@ -797,7 +807,44 @@ div.usercomments {
 .containersfoot {
 	padding: 0px 10px;
 }
-
+.heads p, .current a, .arrow {
+  color: [[setting:maincolor]];
+}
+.navbar-form input {
+  margin-right: 5px;
+  border-radius: 0;
+}
+.loginbox.twocolumns {
+  margin: 0 auto;
+}
+.shown {
+  background: [[setting:maincolor]] !important;
+}
+.navbar .nav li.dropdown.open>.dropdown-toggle {
+  background-color: #FFFFFF;
+}
 /* Custom CSS Settings
 -------------------------*/
 [[setting:customcss]]
+@media screen and (min-width: 980px) {
+  #page {
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  div.bodytexts > div {
+    width: auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .sitename {
+    margin-top: 22px;
+    padding-left: 30px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .shadow {
+    width: -moz-max-content;
+    width: -webkit-max-content;
+  }
+}
