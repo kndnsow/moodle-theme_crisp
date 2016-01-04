@@ -185,5 +185,14 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_confightmleditor($names, $titles, $descriptions, $defaults);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
+    // For custom CSS
+
+    $names = 'theme_crisp/customcss';
+    $titles = get_string('customcss', 'theme_crisp');
+    $descriptions = get_string('customcssdesc', 'theme_crisp');
+    $defaults = '';
+    $setting = new admin_setting_configtextarea($names, $titles, $descriptions, $defaults);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
 }
 
