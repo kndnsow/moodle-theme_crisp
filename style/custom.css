@@ -848,4 +848,11 @@ div.usercomments {
     width: -webkit-max-content;
   }
 }
+.cathide {
+  opacity: 0.3;
+}
+.cathide a {
+    pointer-events: none;
+    cursor: default;
+}
 [[setting:customcss]]
