@@ -362,11 +362,11 @@ echo $calendar;
 						<?php echo format_string(get_string('coursecategory')); ?></div></div></div>  <!-- HEADING -->
 						<div id="eachgroup-content2" class="row-fluid">
               <?php
-$groups = $DB->get_records_sql('select mcat.id,mcat.name,mcat.description from {course_categories} mcat');
+$groups = $DB->get_records_sql('select mcat.id,mcat.name,mcat.description,mcat.visible from {course_categories} mcat');
 if (isset($groups) && !empty($groups)) {
     foreach ($groups as $groupscat) {
 ?>
-                  <div id="<?php echo $groupscat->id; ?>" class="span3 forgroup">
+                  <div id="<?php echo $groupscat->id; ?>" class="span3 forgroup<?php if ($groupscat->visible == 0) { ?> cathide<?php } ?>">
                     <div class="images">
                <img class="pics" src="<?php echo $hascatimg; ?>"/>
                     </div>
