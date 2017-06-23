@@ -33,6 +33,10 @@ require_once($CFG->dirroot.'/calendar/lib.php');
 $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);
 global $DB, $USER, $PAGE;
 
+$crispformatoptions = new stdClass();
+$crispformatoptions->noclean = true;
+$crispformatoptions->overflowdiv = false;
+
 $hasslider1 = $CFG->wwwroot.'/theme/crisp/img/vintage.jpg';
 $hasslider2 = $CFG->wwwroot.'/theme/crisp/img/littlevisuals.jpg';
 $hasslider3 = $CFG->wwwroot.'/theme/crisp/img/gratisography.jpg';
@@ -63,7 +67,7 @@ $hascatimg = $PAGE->theme->setting_file_url("img1", "img1");
 if (!empty($hascatimg)) {
     $hascatimg = $PAGE->theme->setting_file_url("img1", "img1");
 } else {
-    $hascatimg = $CFG->wwwroot. '/theme/crisp/pix/publicdomainpictures.jpg';
+    $hascatimg = $CFG->wwwroot. '/theme/crisp/img/publicdomainpictures.jpg';
 }
 if (right_to_left()) {
     $regionbsid = 'region-bs-main-and-post';
@@ -95,15 +99,14 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 				<div class="span12">
 					<div id="lemmon-slider">
 						<div id="slider3" class="slider">
-							<ul><?php if (get_config('theme_crisp', 'slidercount') > 0) { ?>
-<?php 
-    for ($slidecounts = 1; $slidecounts <= get_config('theme_crisp', 'slidercount'); $slidecounts = $slidecounts + 1) {?>
-								<li><div>
-								<img src="<?php echo $PAGE->theme->setting_file_url("slidepic".$slidecounts, "slidepic".$slidecounts); ?>" alt=""/>
-								</div></li>
-								<?php 
-    }
-} else { ?>
+							<ul><?php if (get_config('theme_crisp', 'slidercount') > 0) { 
+	    						for ($slidecounts = 1; $slidecounts <= get_config('theme_crisp', 'slidercount'); $slidecounts = $slidecounts + 1) {?>
+										<li><div>
+										<img src="<?php echo $PAGE->theme->setting_file_url("slidepic".$slidecounts, "slidepic".$slidecounts); ?>" alt=""/>
+										</div></li>
+									<?php
+	    						}
+								} else { ?>
 									<li><div>
 										<img src="<?php echo $hasslider1; ?>" alt=""/>
 									</div></li>
@@ -123,8 +126,7 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 										<img src="<?php echo $hasslider6; ?>" alt=""/>
 									</div></li>
 								<?php 
-}
-?>
+								} ?>
 							</ul>
 						</div>
 						<div class="controls">
@@ -137,216 +139,191 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 			
 			<div class="bodydetails">
 				<div class="row-fluid">
-					<div class="span8">
+					<div class="span7">
 						<div class="shortnote">
 							<?php $haswelcome = $PAGE->theme->setting_file_url("picture1", "picture1");
-if (!empty($haswelcome)) { ?>
-              				<div class="welcomemsg"><img src="<?php echo $PAGE->theme->setting_file_url("picture1", "picture1"); ?>"/></div>
+								if (!empty($haswelcome)) { ?>
+              			<div class="welcomemsg"><img src="<?php echo $PAGE->theme->setting_file_url("picture1", "picture1"); ?>"/></div>
               				<?php
-} else { ?>
-              				<div class="welcomemsg"><img src="<?php echo $haswelcomemsg; ?>"/></div>
+								} else { ?>
+              			<div class="welcomemsg"><img src="<?php echo $haswelcomemsg; ?>"/></div>
               				<?php 
-} ?>
+								} ?>
               	
-								<div class="bodytexts">
-									<div class="forsupport">
+								<div class="bodytexts span12">
+									<div class="forsupport span4">
 										<div class="icons">
 											<a href="<?php echo $CFG->wwwroot.'/blog/index.php?userid='.$USER->id;?>">
 											<img class="pics" src="<?php echo $haspic1; ?>"/></a>
 										</div>
 										<div class="heads">
-<?php
-$pluginname = 'theme_crisp';// For the heading.
-$fieldname = 'supportpara';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name= ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-?>
-											<p style="padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
 											<?php
-} else {
-?>
-											<p style="padding-top: 6px; font-size: 17px;"><b><?php echo format_string(get_string('supports', 'cache')); ?></b></p>
-											<?php
-}
-?>
+											$pluginname = 'theme_crisp';// For the heading.
+											$fieldname = 'supportpara';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
+											  where mcp.plugin = ? and mcp.name= ?', array($pluginname, $fieldname));
+											if (!empty($body->value)) {
+													echo format_text($body->value, "", $crispformatoptions);
+											} else {
+													echo format_text(get_string('supports', 'cache'), "", $crispformatoptions);
+											} ?>
 										</div>
 										<div class="texts">
-<?php
-$pluginname = 'theme_crisp';// For the text.
-$fieldname = 'supportparatext';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name= ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-    $str = $body->value;
-} else {
-    $str = get_string('separateandconnectedinfo');
-}
-$sstr = substr($str, 0, 165) . '...';
-?>
-											<p><?php echo $sstr; ?></p>
+											<?php
+											$pluginname = 'theme_crisp';// For the text.
+											$fieldname = 'supportparatext';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
+											  where mcp.plugin = ? and mcp.name= ?', array($pluginname, $fieldname));
+											if (!empty($body->value)) {
+											    $str = $body->value;
+											} else {
+											    $str = get_string('separateandconnectedinfo');
+											}
+											$sstr = substr($str, 0, 165) . '...';
+											?>
+											<p><?php echo format_text($sstr, "", $crispformatoptions); ?></p>
 										</div>
 									</div> <!-- end of forsupport -->
-									<div class="forcourses">
+									<div class="forcourses span4">
 										<div class="icons">
 											<a href="<?php echo $CFG->wwwroot.'/course/index.php';?>"><img class="pics" src="<?php echo $haspic2; ?>"/></a>
 										</div>
-									<div class="heads">
-										<?php  // For the heading.
-$pluginname = 'theme_crisp';
-$fieldname = 'coursespara';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-?>
-										<p style="padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
-										<?php
-} else {
-?>
-                    <p style="padding-top: 6px; font-size: 17px;"><b>
-                    <?php echo format_string(get_string('course', 'calendar')); ?></b></p>
-                    <?php
-}
-?>
-									</div>
-									<div class="texts">
-										<?php  // For the text.
-$pluginname = 'theme_crisp';
-$fieldname = 'coursesparatext';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-    $str = $body->value;
-} else {
-    $str = get_string('separateandconnectedinfo');
-}
-$sstr = substr($str, 0, 165) . '...';
-?>
-										<p><?php echo $sstr; ?></p>
-									</div>
-								</div>  <!-- end of forcourses -->
-								<div class="forforum">
-									<div class="icons">
-										<a href="<?php echo $CFG->wwwroot.'/mod/forum/user.php?id='.$USER->id;?>">
-										<img class="pics" src="<?php echo $haspic3; ?>"/></a>
-									</div>
-									<div class="heads">
-<?php
-// For the heading.
-$pluginname = 'theme_crisp';
-$fieldname = 'forumpara';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-?>
-										<p style="padding-top: 6px; font-size: 17px;"><b><?php echo $body->value; ?></b></p>
-<?php
-} else {
-?>
-                    <p style="padding-top: 6px; font-size: 17px;"><b>
-                    <?php echo format_string(get_string('modulenameplural', 'forum')); ?></b></p>
-<?php
-}
-?>
-									</div>
-									<div class="texts">
-<?php
-// For the text.
-$pluginname = 'theme_crisp';
-$fieldname = 'forumparatext';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-    $str = $body->value;
-} else {
-    $str = get_string('separateandconnectedinfo');
-}
-$sstr = substr($str, 0, 165) . '...';
-?>
-										<p><?php echo $sstr; ?></p>
-									</div>
-								</div> <!-- end of forforum -->
-							</div>
-							<div class="quotations">
-                <div class="quoteshead">
-                <?php 
-$pluginname = 'theme_crisp';
-$fieldname = 'quoteheading';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-?>
-                <?php echo $body->value; ?>
-                <?php
-} else {
-?>
-                <?php echo "The Word on the Street"; ?>
-                <?php
-}
-?>
-                </div>
-                <div class="quote">
-                <?php 
-$pluginname = 'theme_crisp';
-$fieldname = 'quoteheadingtext';
-$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
-  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
-if (!empty($body->value)) {
-?>
-                <blockquote><p>"<?php echo $body->value; ?></p>"</blockquote>
-                <?php
-} else {
-?>
-                <blockquote><p>"<?php echo get_string('separateandconnectedinfo'); ?>"</p></blockquote> 
-                <?php
-}
-?> 
-                </div> <!-- end of quote -->
-							</div> <!-- end of quotations -->
+										<div class="heads">
+											<?php  // For the heading.
+											$pluginname = 'theme_crisp';
+											$fieldname = 'coursespara';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
+											  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
+											if (!empty($body->value)) {
+											 		echo format_text($body->value, "", $crispformatoptions); 
+											} else {
+													echo format_text(get_string('course', 'calendar'), "", $crispformatoptions);
+											}
+											?>
+										</div>
+										<div class="texts">
+											<?php  // For the text.
+											$pluginname = 'theme_crisp';
+											$fieldname = 'coursesparatext';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
+											  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
+											if (!empty($body->value)) {
+											    $str = $body->value;
+											} else {
+											    $str = get_string('separateandconnectedinfo');
+											}
+											$sstr = substr($str, 0, 165) . '...'; ?>
+											<p><?php echo format_text($sstr, "", $crispformatoptions); ?></p>
+										</div>
+									</div>  <!-- end of forcourses -->
+									<div class="forforum span4">
+										<div class="icons">
+											<a href="<?php echo $CFG->wwwroot.'/mod/forum/user.php?id='.$USER->id;?>">
+											<img class="pics" src="<?php echo $haspic3; ?>"/></a>
+										</div>
+										<div class="heads">
+											<?php
+											// For the heading.
+											$pluginname = 'theme_crisp';
+											$fieldname = 'forumpara';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
+											  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
+											if (!empty($body->value)) {
+													echo format_text($body->value, "", $crispformatoptions); ?></b></p>
+											<?php
+											} else {
+												  echo format_text(get_string('modulenameplural', 'forum'), "", $crispformatoptions);
+											} ?>
+										</div>
+										<div class="texts">
+											<?php
+											// For the text.
+											$pluginname = 'theme_crisp';
+											$fieldname = 'forumparatext';
+											$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
+											  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
+											if (!empty($body->value)) {
+											    $str = $body->value;
+											} else {
+											    $str = get_string('separateandconnectedinfo');
+											}
+											$sstr = substr($str, 0, 165) . '...'; ?>
+											<p><?php echo format_text($sstr, "", $crispformatoptions); ?></p>
+										</div>
+									</div> <!-- end of forforum -->
+								</div>
+								<div class="quotations">
+                	<div class="quoteshead">
+                		<?php 
+										$pluginname = 'theme_crisp';
+										$fieldname = 'quoteheading';
+										$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
+										  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
+										if (!empty($body->value)) {
+												echo format_text($body->value, "", $crispformatoptions);
+										} else {
+  											echo "The Word on the Street";
+										} ?>
+                	</div>
+                	<div class="quote">
+										<?php 
+										$pluginname = 'theme_crisp';
+										$fieldname = 'quoteheadingtext';
+										$body = $DB->get_record_sql('select mcp.value from {config_plugins} mcp
+										  where mcp.plugin = ? and mcp.name = ?', array($pluginname, $fieldname));
+										if (!empty($body->value)) { ?>
+                				<blockquote><p>"<?php echo format_text($body->value, "", $crispformatoptions); ?></p>"</blockquote>
+                		<?php
+										} else {
+										?>
+                				<blockquote><p>"<?php echo format_text(get_string('separateandconnectedinfo'), "", $crispformatoptions); ?>"</p></blockquote> 
+                		<?php
+										} ?> 
+                	</div> <!-- end of quote -->
+								</div> <!-- end of quotations -->
 						</div> <!-- end of shortnote -->
-					</div> <!-- end of span8 cust -->
-							<!-- FOR UPCOMING EVENTS & CALENDAR -->	
-					<div class="span4" style="margin-left: 0;">
+					</div> <!-- end of span7 cust -->
+					<!-- FOR UPCOMING EVENTS & CALENDAR -->	
+					<div class="span5" style="margin-left: 0;">
 						<div class="dateandevents">
 							<div class="row-fluid">
 								<div class="span12">
 									<div class="upcomingevents">
 										<div class="event"><b><?php echo format_string(get_string('upcomingevents', 'calendar')); ?></b></div>
-										<?php
-$array = array();
-$course = $DB->get_records_sql('select id from {course}');
-foreach ($course as $key => $courses) {
-    $array[] = $courses->id;
-}
-$defaultlookahead = CALENDAR_DEFAULT_UPCOMING_LOOKAHEAD;
-if (isset($CFG->calendar_lookahead)) {
-    $defaultlookahead = intval($CFG->calendar_lookahead);
-}
-$lookahead = get_user_preferences('calendar_lookahead', $defaultlookahead);
-$defaultmaxevents = CALENDAR_DEFAULT_UPCOMING_MAXEVENTS;
-if (isset($CFG->calendar_maxevents)) {
-    $defaultmaxevents = intval($CFG->calendar_maxevents);
-}
-$maxevents = get_user_preferences('calendar_maxevents', $defaultmaxevents);
-$events = calendar_get_upcoming($array, '', $USER->id, $lookahead, $maxevents);
-foreach ($events as $upcomingevents) {
-    $date = date("F j", (int)$upcomingevents->timestart).'-'.
-    date("j,Y", (int)$upcomingevents->timestart + (int)$upcomingevents->timeduration);
-?>
-										<p><?php echo $upcomingevents->name;?><br><?php echo $upcomingevents->description;?><br><?php echo $date;?></p>
-										<?php
-}
-?>
+											<?php
+											$array = array();
+											$course = $DB->get_records_sql('select id from {course}');
+											foreach ($course as $key => $courses) {
+											    $array[] = $courses->id;
+											}
+											$defaultlookahead = CALENDAR_DEFAULT_UPCOMING_LOOKAHEAD;
+											if (isset($CFG->calendar_lookahead)) {
+											    $defaultlookahead = intval($CFG->calendar_lookahead);
+											}
+											$lookahead = get_user_preferences('calendar_lookahead', $defaultlookahead);
+											$defaultmaxevents = CALENDAR_DEFAULT_UPCOMING_MAXEVENTS;
+											if (isset($CFG->calendar_maxevents)) {
+											    $defaultmaxevents = intval($CFG->calendar_maxevents);
+											}
+											$maxevents = get_user_preferences('calendar_maxevents', $defaultmaxevents);
+											$events = calendar_get_upcoming($array, '', $USER->id, $lookahead, $maxevents);
+											foreach ($events as $upcomingevents) {
+											    $date = date("F j", (int)$upcomingevents->timestart).'-'.
+											    date("j,Y", (int)$upcomingevents->timestart + (int)$upcomingevents->timeduration);
+											?>
+													<p><?php echo $upcomingevents->name;?><br><?php echo $upcomingevents->description;?><br><?php echo $date;?></p>
+													<?php
+											} ?>
 									</div> <!-- end of upcomingevents -->
 								</div> <!-- end of span12 --> 
 								<div class="span12">
-									<div class="calendar">
+									<div class="calendar frontpage">
 										<?php
-$calm = optional_param( 'cal_m', 0, PARAM_INT );
-$caly = optional_param( 'cal_y', 0, PARAM_INT );
-$calendar = calendar_get_mini(array(), '', $USER->id, $calm, $caly, 'frontpage', 1);
-echo $calendar;
-?>
+										$calm = optional_param( 'cal_m', 0, PARAM_INT );
+										$caly = optional_param( 'cal_y', 0, PARAM_INT );
+										$calendar = calendar_get_mini(array(), '', $USER->id, $calm, $caly, 'frontpage', 1);
+										echo $calendar;
+										?>
 									</div> <!-- end of calendar -->
 								</div> <!-- end of span12 --> 
 							</div> <!-- end of row-fluid -->
@@ -362,51 +339,46 @@ echo $calendar;
 						<?php echo format_string(get_string('coursecategory')); ?></div></div></div>  <!-- HEADING -->
 						<div id="eachgroup-content2" class="row-fluid">
               <?php
-$groups = $DB->get_records_sql('select mcat.id,mcat.name,mcat.description,mcat.visible from {course_categories} mcat');
-if (isset($groups) && !empty($groups)) {
-    foreach ($groups as $groupscat) {
-?>
-                  <div id="<?php echo $groupscat->id; ?>" class="span3 forgroup<?php if ($groupscat->visible == 0) { ?> cathide<?php } ?>">
-                    <div class="images">
-               <img class="pics" src="<?php echo $hascatimg; ?>"/>
-                    </div>
-                    <div class="headings">
-                      <p><b><?php echo $groupscat->name; ?></b></p>
-                    </div>
-                    <div class="textings">
-                      <p><?php echo $groupscat->description; ?></p>
-                    </div>
-                    <a class="viewbtn" href="<?php echo $CFG->wwwroot.'/course/index.php?categoryid='.$groupscat->id;?>">view</a>
-                  </div>
+							$groups = $DB->get_records_sql('select mcat.id,mcat.name,mcat.description, mcat.visible from {course_categories} mcat');
+							if (isset($groups) && !empty($groups)) {
+							    foreach ($groups as $groupscat) { ?>
+	                 		<div id="<?php echo $groupscat->id; ?>" class="span3 forgroup<?php if ($groupscat->visible == 0) { ?> cathide<?php } ?>">
+		                    <div class="images">
+		               				<img class="pics" src="<?php echo $hascatimg; ?>"/>
+		                    </div>
+		                    <div class="headings">
+		                      <p><b><?php echo $groupscat->name; ?></b></p>
+		                    </div>
+		                    <div class="textings">
+		                      <p><?php echo $groupscat->description; ?></p>
+		                    </div>
+	                    	<a class="viewbtn" href="<?php echo $CFG->wwwroot.'/course/index.php?categoryid='.$groupscat->id;?>">view</a>
+                  		</div>
                 <?php
-    }
-    // End of foreach().
-}
-    // End of if().
-?>
+   								} // End of foreach().
+							} // End of if().
+							?>
 						<div> <!-- end of for eachgroup-content2 -->
 					</div> <!-- end of forgroups -->
 				</div> <!-- end of span12 -->
 			</div>  <!-- end of row-fluid -->
 			<div id="bodymaincontent" class="row-fluid">
-			<?php
-echo $OUTPUT->main_content();
-?>
+				<?php echo $OUTPUT->main_content(); ?>
 			</div>
 		</section>
 	</div>
 </div>
 <script>
 	window.onload = function(){
-// home page slider 
-  $( '#slider3' ).lemmonSlider({ infinite: true });
+		// home page slider 
+  		$( '#slider3' ).lemmonSlider({ infinite: false });
 		sliderAutoplay();
-  }
-  // autoplay
-  var sliderTimeout = null;
-  function sliderAutoplay(){
-	  $( '#slider3' ).trigger( 'nextSlide' );
-	  sliderTimeout = setTimeout( 'sliderAutoplay()', 3000 );
-  }
+  	}
+	// autoplay
+	var sliderTimeout = null;
+	function sliderAutoplay(){
+		$( '#slider3' ).trigger( 'nextSlide' );
+		sliderTimeout = setTimeout( 'sliderAutoplay()', 4000 );
+	}
 </script>
 <?php require('footer.php');

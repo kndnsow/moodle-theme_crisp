@@ -35,12 +35,17 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
     font-style: normal;
     font-weight: 400;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
-
-body {
+.navbar-fixed-top {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+/*body {
 		padding-top: 51px;
-}
+}*/
 
 div#frontpage-course-list {
   display: none;
@@ -131,12 +136,13 @@ header#page-header {
    margin-bottom: 20px;
    border-bottom: [[setting:maincolor]] 20px solid;
    margin: 0 auto;
+   padding-left: 10px;
 }
 
 header#page-header h1 {
   float: left;
-  width: 100%;
-  padding-left: 5%;
+  /*width: 100%;*/
+  /*padding-left: 5%;*/
 }
 
 header#page-header h1 a {
@@ -174,7 +180,9 @@ header#page-header h1 img{
 .menulist li{
   float: left;
   display: inline-block;
-  height: 100%;
+ /* height: 100%;*/
+  /*padding: 0 10px;*/
+  position: relative;
 }
 
 .menulist a.main {
@@ -194,7 +202,7 @@ header#page-header h1 img{
 .shadow ul > li > a.newmainlist {
   color: white;
   background: [[setting:maincolor]];
-  height: 72px;
+  /*height: 72px;*/
 }
 
 
@@ -206,7 +214,7 @@ ul.dropdown {
 #main-navigation > li > ul.dropdown {
   position: absolute;
   top: 100%;
-  width: 25%;
+  width: 100%;
   height: auto;
   background: white;
   display: none;
@@ -273,6 +281,7 @@ div#bodymaincontent .sitetopic {
 
 .container-fluid {
   background: white;
+  max-width: 100%;
 }
 
 button.btn {
@@ -394,6 +403,8 @@ input[type="submit"], input[type="button"], button, .button .btn {
 #page.container-fluid {
  padding-right: 0px;
  padding-left: 0px;
+ margin-left: 0px;
+ max-width: inherit;
 }
 
 /* CSS  for slider */
@@ -472,29 +483,30 @@ a.prev-page {
 /********** after slider body content ***********/
 
 div.bodydetails {
-  width: 95%;
+  width: 100%;
 }
-
+.frontpage .calendartable {
+    text-align: center;
+}
 .upcomingevents {
   text-align: left;
 }
 
-div.shortnote {
+/*div.shortnote {
   background-image: url([[pix:theme|bodycut]]);
   background-position: 100% 13px;
   background-repeat: no-repeat;
   float: left;
-}
+}*/
 
 div.welcomemsg {
-  width: 86%;
-  padding-left: 2%;
+  width: 100%;
+  
   padding-top: 1%;
   padding-bottom: 1%;
-  margin-left: 5%;
-  margin-right: 5%;
+  
   margin-top: 3%;
-  padding-right: 2%;
+  
 }
 
 .welcomemsg img {
@@ -503,20 +515,20 @@ div.welcomemsg {
 
 div.bodytexts {
   margin-top: 2%;
-  margin-left: 5%;
-  float: left;
+  /*margin-left: 5%;
+  float: left;*/
 }
 
 div.bodytexts > div {
   padding: 15px 0 25px 0;
-  width: 25%;
+ /* width: 25%;*/
   text-align: center;
   float: left;
 }
 
-div.forsupport {
+/*div.forsupport {
   margin-right: 7%;
-}
+}*/
 
 div.texts p {
   text-align: center;
@@ -524,10 +536,10 @@ div.texts p {
   padding-right: 4%;
 }
 
-div.forcourses {
+/*div.forcourses {
   margin-right: 7%;
 }
-
+*/
 div.quotations {
   float: left;
   width: 85%;
@@ -605,8 +617,8 @@ div.group {
 /*calender*/
 
 div.dateandevents {
-  padding-right: 1%;
-  margin-right: 3%;
+  /*padding-right: 1%;
+  margin-right: 3%;*/
   display: block;
   width: 100%;
   float: left;
@@ -626,11 +638,12 @@ div.calendar {
   border: 1px solid #bebebe;
   border-radius: 4px;
   margin-right: 0;
-  margin-top: 2%;
-  padding: 10px;
+  /*margin-top: 2%;*/
+  padding: 5px 2px;
   position: relative;
-  width: 100%;
+  /*width: 100%;*/
   height: auto;
+  margin: 10px;
 }
 div.calendar table {
   width: 100%;
@@ -640,24 +653,30 @@ div.calendar table caption{
 }
 .calendar-controls {
   margin-bottom: 15px;
+  position: relative;
 }
 
 .calendar-controls .arrow_link {
   position: absolute;
 }
-
+/*
 .calendar-controls .arrow_link.previous {
  left: 15px;
+}*/
+.block .calendar-controls .current {
+  width: 100%;
 }
-
 .calendar-controls .arrow_link.next {
- right: 15px;
+ right: 0;
+}
+.block .calendar-controls .previous {
+  text-align: left;
 }
 
 div.forgroups {
-  width: 100%;
-  float: left;
-  margin: 4%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 20px;
 }
 
 div.span3.forgroup {
@@ -777,7 +796,23 @@ div.containersfoot {
 }
 
 /*** footer close ***/
-
+@media (max-width: 480px) {
+  .navbar .popover-region .popover-region-container {
+    top: 79px;
+  }
+}
+.navbar .popover-region .popover-region-container {
+  z-index: 201 !important;
+}
+.messaging-area-container .btn.btn-link {
+    color: #fff !important;
+}
+.messaging-area-container .btn {
+  text-shadow: none !important;
+}
+.messaging-area-container .messaging-area .messages-area .messages-header {
+  line-height: 28px !important;
+}
 /*styles for blog page*/
 
 #containerbox {
@@ -807,8 +842,11 @@ div.usercomments {
 .containersfoot {
 	padding: 0px 10px;
 }
-.heads p, .current a, .arrow {
+.heads .text_to_html, .current a, .arrow {
   color: [[setting:maincolor]];
+}
+.heads .text_to_html {
+  font-weight: bold;
 }
 .navbar-form input {
   margin-right: 5px;
@@ -828,13 +866,33 @@ div.usercomments {
 [[setting:customcss]]
 @media screen and (min-width: 980px) {
   #page {
-    margin-top: 20px;
+    margin-top: 0px;
+  }
+}
+@media (min-width: 1200px) {
+  .row {
+     margin-left: -20px; 
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .navbar-inner {
+    background-color: #fff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+  .responsive_pull_left {
+    float: left !important;
   }
 }
 @media screen and (max-width: 768px) {
   div.bodytexts > div {
     width: auto;
   }
+  div.calendar table caption{
+   font-size: 16px;
+  }
+
 }
 @media screen and (max-width: 767px) {
   .sitename {
@@ -847,6 +905,16 @@ div.usercomments {
     width: -moz-max-content;
     width: -webkit-max-content;
   }
+  .shadow ul {
+    padding-right: 0px;
+    padding-left: 12px;
+  }
+  .menulist li {
+    padding: 0px;
+  }
+  .menulist a.main {
+    padding: 0 5px;
+  }
 }
 .cathide {
   opacity: 0.3;
@@ -854,5 +922,21 @@ div.usercomments {
 .cathide a {
     pointer-events: none;
     cursor: default;
+}
+.navbar .nav-collapse.in {
+    border-top: none;
+}
+.usermenu {
+    float: right;
+    margin-left: 0px;
+}
+#block-region-side-post {
+  margin-left: 0px;
+}
+.frontpage .calendar-controls a.previous {
+  left: 0;
+}
+.bodytexts {
+    margin-left: 0px !important;
 }
 [[setting:customcss]]

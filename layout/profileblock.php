@@ -45,21 +45,5 @@ if (!isloggedin() or isguestuser()) {
     echo '<button style="color: white;" class="btn" type="submit"> '.get_string('login').'</button>';
     echo '</form>';
 } else {
-    echo '<ul class="nav">
-		<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#cm_submenu_5">'
-    .$OUTPUT->user_profile_picture()."  ".$USER->firstname."  ".$USER->lastname;
-    if ( $CFG->version >= '2015051100.00' ) {
-        $file = get_string('privatefiles');
-    } else {
-        $file = get_string('myfiles');
-    }
-    echo '<b class="caret"></b></a>
-    <ul class = "dropdown-menu profiledrop">
-    <li><a href = "'.$CFG->wwwroot.'/my">'.get_string('mycourses').'</a></li>
-    <li><a href = "'.$CFG->wwwroot.'/user/profile.php">'.get_string('viewprofile').'</a></li>
-    <li><a href = "'.$CFG->wwwroot.'/user/edit.php">'.get_string('editmyprofile').'</a></li>
-    <li><a href = "'.$CFG->wwwroot.'/user/files.php">'.$file.'</a></li>
-    <li><a href = "'.$CFG->wwwroot.'/calendar/view.php?view=month">'.get_string('calendar', 'calendar').'</a></li>
-    <li><a href = "'.$CFG->wwwroot.'/login/logout.php">'.get_string('logout').'</a></li></ul></li></ul>';
+    echo $OUTPUT->user_menu();
 }

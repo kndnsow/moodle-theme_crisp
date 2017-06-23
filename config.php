@@ -88,3 +88,7 @@ $THEME->layouts = array(
       'options' => array('nonavbar' => true),
   ),
 );
+
+if ($CFG->version >= 2017051500) { /*support for new font awesome icon from moodle version 3.3*/
+  $THEME->iconsystem = \core\output\icon_system::FONTAWESOME;
+}

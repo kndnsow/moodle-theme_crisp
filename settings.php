@@ -49,7 +49,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_crisp/slidercount';
     $title = get_string('slidercount', 'theme_crisp');
     $description = get_string('slidercountdesc', 'theme_crisp');
-    $setting = new admin_setting_configselect($name, $title, $description, 6,
+    $setting = new admin_setting_configselect($name, $title, $description, 0,
     array(
             0 => get_string('zero', 'theme_crisp'),
             1 => get_string('one', 'theme_crisp'),

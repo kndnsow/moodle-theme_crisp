@@ -31,5 +31,10 @@ $(document).ready(function() {
       }
     });
   });
+
+  if($('#page-message-index').hasClass('empty-region-side-post')) {
+    $('#region-bs-main-and-pre').removeClass('span8');
+    $('#region-bs-main-and-pre').addClass('span12');
+  }
   
 });

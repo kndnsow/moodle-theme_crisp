@@ -59,19 +59,28 @@ echo $OUTPUT->doctype()
       <?php 
 }
       ?>
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <div class="nav-collapse collapse">
-        <?php echo $OUTPUT->custom_menu(); ?>
-        <ul class="nav pull-right">
-          <li><?php echo $OUTPUT->page_heading_menu();
-              require('profileblock.php');?>
-          </li>
-          <li class="navbar-text"></li>
-        </ul>
+      <div class="row">
+        <div class="span6 custommenu">
+          <a class="btn btn-navbar responsive_pull_left" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse collapse">
+            <?php echo $OUTPUT->custom_menu(); ?>
+          </div>
+        </div>
+        <div class="span6 usermenu">
+          <ul class="nav pull-right">
+              <li><?php echo $OUTPUT->page_heading_menu();
+                  require('profileblock.php');?>
+              </li>
+              <li class="navbar-text"></li>
+          </ul>
+          <?php if ($CFG->version > 2016120500) { ?>
+              <?php echo $OUTPUT->navbar_plugin_output(); ?>
+          <?php } ?>
+        </div>
       </div>
     </div>
   </nav>
@@ -81,9 +90,9 @@ echo $OUTPUT->doctype()
     <div class="head-details">
       <div class="row-fluid" style="margin: 0 auto;">
         <div class="span3">
+          <a class = "crisp-logo" href="<?php echo $CFG->wwwroot;?>"><span class="logo"></span></a>
           <h1>
             <a class = "crisp-logo" href="<?php echo $CFG->wwwroot;?>">
-          	 <span class="logo"></span>
              <span class = "sitename"><?php echo format_string($SITE->fullname); ?></span>
             </a>
           </h1>

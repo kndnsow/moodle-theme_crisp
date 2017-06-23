@@ -49,7 +49,7 @@ if (right_to_left()) {
   </div>  
 </div> 
 <div id="page-content" class="row-fluid">
-  <div id="<?php echo $regionbsid ?>" class="span9">
+  <div id="<?php echo $regionbsid ?>" class="span8">
     <div class="row-fluid">
       <section id="region-main" class="span8 pull-right main-span-content">
         <?php
@@ -60,6 +60,6 @@ if (right_to_left()) {
       </section>
     </div>
   </div>
-  <?php echo $OUTPUT->blocks('side-post', 'span3'); ?>
+  <?php echo $OUTPUT->blocks('side-post', 'span4'); ?>
 </div>
 <?php require('footer.php');
