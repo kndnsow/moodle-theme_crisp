@@ -79,7 +79,7 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 <?php require('header.php'); ?>    
 
 <div id="show-admin">
-	<a class="admin-sets" href="#">
+	<a class="admin-sets">
 		<span></span>
 	</a>
 	<div class="adminset">  
@@ -130,8 +130,8 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 							</ul>
 						</div>
 						<div class="controls">
-							<a href="#" class="next-page"></a>
-							<a href="#" class="prev-page"></a>
+							<a class="next-page"></a>
+							<a class="prev-page"></a>
 						</div>
 					</div> <!-- end of lemmon slider -->
 				</div> 
@@ -306,23 +306,73 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 											    $defaultmaxevents = intval($CFG->calendar_maxevents);
 											}
 											$maxevents = get_user_preferences('calendar_maxevents', $defaultmaxevents);
-											$events = calendar_get_upcoming($array, '', $USER->id, $lookahead, $maxevents);
-											foreach ($events as $upcomingevents) {
-											    $date = date("F j", (int)$upcomingevents->timestart).'-'.
-											    date("j,Y", (int)$upcomingevents->timestart + (int)$upcomingevents->timeduration);
-											?>
-													<p><?php echo $upcomingevents->name;?><br><?php echo $upcomingevents->description;?><br><?php echo $date;?></p>
-													<?php
+
+											if ($CFG->version >= 2017102500) {
+												$calendar = new calendar_information(0, 0, 0, time());
+												$course = get_site();
+		    									$courses = calendar_get_default_courses();
+		    									$calendar->set_sources($course, $courses, $PAGE->category);
+		    									$renderer = $PAGE->get_renderer('core_calendar');
+												$events = calendar_get_view($calendar, 'upcoming');
+												if (!empty($events)) {
+													echo "<ul class='upcomingeventul'>";
+													foreach ($events as $upcomingevents) {
+														if (isset($upcomingevents->events)) {
+															foreach ($upcomingevents->events as $upcomingevent) {
+																$date = date("F j", (int)$upcomingevent->timestart).'-'.
+															    date("j,Y", (int)$upcomingevent->timestart + (int)$upcomingevent->timeduration);
+														    echo "<li>";
+														    if (isset($upcomingevent->name)) {
+														    	echo "<span class='eventname'>".$upcomingevent->name."</span>";
+														    }
+														    if (isset($upcomingevent->description) && !empty($upcomingevent->description)) {
+														    	echo "<span>".$upcomingevent->description."</span>";
+														    }
+														    if (isset($date)) {
+														    	echo "<span>".$date."</span>";
+														    }
+														    echo "</li><br>";
+															}
+														}
+													}
+													echo "</ul>";
+												}
+											} else {
+												$events = calendar_get_upcoming($array, '', $USER->id, $lookahead, $maxevents);
+												if (!empty($events)) {
+													echo "<ul class='upcomingeventul'>";
+													foreach ($events as $upcomingevents) {
+													  $date = date("F j", (int)$upcomingevents->timestart).'-'.
+													    date("j,Y", (int)$upcomingevents->timestart + (int)$upcomingevents->timeduration);
+													  echo "<li>";
+													  if (isset($upcomingevents->name)) {
+												    	echo "<span class='eventname'>".$upcomingevents->name."</span>";
+													  }
+													  if (isset($upcomingevents->description) && !empty($upcomingevents->description)) {
+													    	echo "<span>".$upcomingevents->description."</span>";
+													  }
+													  if (isset($date)) {
+												    	echo "<span>".$date."</span>";
+												    }
+													  echo "</li><br>";
+													}
+													echo "</ul>";
+												}
 											} ?>
 									</div> <!-- end of upcomingevents -->
 								</div> <!-- end of span12 --> 
 								<div class="span12">
 									<div class="calendar frontpage">
 										<?php
-										$calm = optional_param( 'cal_m', 0, PARAM_INT );
-										$caly = optional_param( 'cal_y', 0, PARAM_INT );
-										$calendar = calendar_get_mini(array(), '', $USER->id, $calm, $caly, 'frontpage', 1);
-										echo $calendar;
+										if ($CFG->version >= 2017102500) {
+	    									list($data, $template) = calendar_get_view($calendar, 'mini');
+	    									echo $renderer->render_from_template($template, $data);
+	    								} else {
+	    									$calm = optional_param( 'cal_m', 0, PARAM_INT );
+											$caly = optional_param( 'cal_y', 0, PARAM_INT );
+											$calendar = calendar_get_mini(array(), '', $USER->id, $calm, $caly, 'frontpage', 1);
+											echo $calendar;
+	    								}
 										?>
 									</div> <!-- end of calendar -->
 								</div> <!-- end of span12 --> 
@@ -338,7 +388,7 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 						<div class="row-fluid"><div class="span12"><div class="group">
 						<?php echo format_string(get_string('coursecategory')); ?></div></div></div>  <!-- HEADING -->
 						<div id="eachgroup-content2" class="row-fluid">
-              <?php
+              			<?php
 							$groups = $DB->get_records_sql('select mcat.id,mcat.name,mcat.description, mcat.visible from {course_categories} mcat');
 							if (isset($groups) && !empty($groups)) {
 							    foreach ($groups as $groupscat) { ?>
@@ -354,7 +404,7 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 		                    </div>
 	                    	<a class="viewbtn" href="<?php echo $CFG->wwwroot.'/course/index.php?categoryid='.$groupscat->id;?>">view</a>
                   		</div>
-                <?php
+                		<?php
    								} // End of foreach().
 							} // End of if().
 							?>
