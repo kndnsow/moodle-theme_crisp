@@ -30,7 +30,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2015081705;
+$plugin->version   = 2015081706;
 $plugin->component = 'theme_crisp';
 $plugin->dependencies = array(
     'theme_bootstrapbase'  => 2013050100,
