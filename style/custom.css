@@ -94,6 +94,43 @@ div#notice {
 }
 
 
+#page-course-management .course-listing ul li .float-left {
+  width: auto !important;
+  padding-top: 0px !important;
+}
+
+.empty-region-side-post #page-content #region-bs-main-and-pre.span8 {
+  width: 100% !important;
+}
+.upcomingevents .upcomingeventul {
+  list-style: none;
+}
+.upcomingevents li {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.upcomingevents li span {
+    display: block;
+}
+.upcomingevents li span.eventname{
+  color: [[setting:maincolor]];
+  font-size: 23px;
+  padding: 5px 0 20px; 
+}
+
+.upcomingevents li h1,
+.upcomingevents li h2,
+.upcomingevents li h3,
+.upcomingevents li h4,
+.upcomingevents li h5,
+.upcomingevents li p{
+  margin: 0;
+}
+
+.togglecompletion button.btn {
+  background: transparent;
+}
 
 /********/
 
