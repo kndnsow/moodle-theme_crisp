@@ -32,9 +32,9 @@ $PAGE->requires->jquery();
 $PAGE->requires->jquery_plugin('ui');
 $PAGE->requires->jquery_plugin('ui-css');
 $PAGE->requires->js('/theme/crisp/javascript/font.js');
-$PAGE->requires->js('/theme/crisp/lemmon-Lemmon-Slider/lemmon-slider.js');
 $PAGE->requires->js('/theme/crisp/javascript/crispy.js');
-
+$PAGE->requires->js('/theme/crisp/javascript/slick.js', true);
+$PAGE->requires->css('/theme/crisp/css/slick.css', true);
 global $CFG, $USER;
 $html = theme_crisp_get_html_for_settings($OUTPUT, $PAGE);
 echo $OUTPUT->doctype()
