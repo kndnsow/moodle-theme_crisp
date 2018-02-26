@@ -898,6 +898,10 @@ div.usercomments {
 .navbar .nav li.dropdown.open>.dropdown-toggle {
   background-color: #FFFFFF;
 }
+#page-site-index div.dateandevents {
+  width: 94%;
+  max-width: 100%;
+}
 /* Custom CSS Settings
 -------------------------*/
 [[setting:customcss]]
