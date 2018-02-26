@@ -76,7 +76,7 @@ if (right_to_left()) {
 }
 $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 ?>
-<?php require('header.php'); ?>    
+<?php require('header.php'); ?>
 
 <div id="show-admin">
 	<a class="admin-sets">
@@ -97,43 +97,34 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 			<!-- Necessary HTML -->
 			<div class="row-fluid">
 				<div class="span12">
-					<div id="lemmon-slider">
-						<div id="slider3" class="slider">
-							<ul><?php if (get_config('theme_crisp', 'slidercount') > 0) { 
-	    						for ($slidecounts = 1; $slidecounts <= get_config('theme_crisp', 'slidercount'); $slidecounts = $slidecounts + 1) {?>
-										<li><div>
-										<img src="<?php echo $PAGE->theme->setting_file_url("slidepic".$slidecounts, "slidepic".$slidecounts); ?>" alt=""/>
-										</div></li>
-									<?php
-	    						}
-								} else { ?>
-									<li><div>
-										<img src="<?php echo $hasslider1; ?>" alt=""/>
-									</div></li>
-									<li><div>
-										<img src="<?php echo $hasslider2; ?>" alt=""/>
-									</div></li>
-									<li><div>
-										<img src="<?php echo $hasslider3; ?>" alt=""/>
-									</div></li>
-									<li><div>
-										<img src="<?php echo $hasslider4; ?>" alt=""/>
-									</div></li>
-									<li><div>
-										<img src="<?php echo $hasslider5; ?>" alt=""/>
-									</div></li>
-									<li><div>
-										<img src="<?php echo $hasslider6; ?>" alt=""/>
-									</div></li>
-								<?php 
-								} ?>
-							</ul>
-						</div>
-						<div class="controls">
-							<a class="next-page"></a>
-							<a class="prev-page"></a>
-						</div>
-					</div> <!-- end of lemmon slider -->
+					<section class="regular slider">
+					<?php if (get_config('theme_crisp', 'slidercount') > 0) { 
+    						for ($slidecounts = 1; $slidecounts <= get_config('theme_crisp', 'slidercount'); $slidecounts = $slidecounts + 1) { ?>
+								<div>
+									<img src="<?php echo $PAGE->theme->setting_file_url("slidepic".$slidecounts, "slidepic".$slidecounts); ?>" alt=""/>
+								</div>
+					  <?php }
+						} else { ?>
+							<div>
+								<img src="<?php echo $hasslider1; ?>" alt=""/>
+							</div>
+							<div>
+								<img src="<?php echo $hasslider2; ?>" alt=""/>
+							</div>
+							<div>
+								<img src="<?php echo $hasslider3; ?>" alt=""/>
+							</div>
+							<div>
+								<img src="<?php echo $hasslider4; ?>" alt=""/>
+							</div>
+							<div>
+								<img src="<?php echo $hasslider5; ?>" alt=""/>
+							</div>
+							<div>
+								<img src="<?php echo $hasslider6; ?>" alt=""/>
+							</div>
+				  <?php } ?>
+				    </section>
 				</div> 
 			</div> 
 			
@@ -418,17 +409,15 @@ $hassidepre = $PAGE->blocks->region_has_content('side-pre', $OUTPUT);
 		</section>
 	</div>
 </div>
-<script>
-	window.onload = function(){
-		// home page slider 
-  		$( '#slider3' ).lemmonSlider({ infinite: false });
-		sliderAutoplay();
-  	}
-	// autoplay
-	var sliderTimeout = null;
-	function sliderAutoplay(){
-		$( '#slider3' ).trigger( 'nextSlide' );
-		sliderTimeout = setTimeout( 'sliderAutoplay()', 4000 );
-	}
+<script type="text/javascript">
+  $(function () {
+    $(".regular").slick({
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+    });
+  });
 </script>
 <?php require('footer.php');
