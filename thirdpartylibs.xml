@@ -22,10 +22,10 @@
         <licenseversion>3.0</licenseversion>
     </library>
     <library>
-        <location>lemmon-Lemmon-Slider/lemmon-slider.js</location>
-        <name>Lemmon Slider - jQuery Plugin</name>
-        <version>Version: 0.2 (9/6/2011)</version>
+        <location>javascript/slick.js</location>
+        <name>slick.js for slider</name>
+        <version>Version: 1.8.1</version>
         <license>MIT</license>
-        <licenseversion>2.0</licenseversion>
+        <licenseversion>1.2</licenseversion>
     </library>
 </libraries>
