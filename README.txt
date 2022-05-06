@@ -4,7 +4,7 @@
 
 This document describes how to copy and customise the Crisp (bootstrapbase) theme so that
 you can build on this to create a theme of your own. It assumes you have some
-understanding of how themes work within Moodle 2.5, as well as a basic understanding
+understanding of how themes work within Moodle 4.0+, as well as a basic understanding
 of HTML and CSS.
 
 Getting started
