@@ -32,9 +32,6 @@ defined('MOODLE_INTERNAL') || die;
 
 $plugin->version   = 2022050607;
 $plugin->component = 'theme_crisp';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2016080100,
-);
 $plugin->maturity = MATURITY_STABLE;
 $plugin->requires  = 2013051401;
 $plugin->release = '2.5.1 (Build: 2022050607)';
